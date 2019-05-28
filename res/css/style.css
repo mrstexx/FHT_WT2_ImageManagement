@@ -1,0 +1,61 @@
+html, body {
+    height: 100%;
+    background-color: #bbdefb;
+    font-family: 'Raleway', sans-serif;
+}
+
+main {
+    min-height: 100%;
+    position: relative;
+}
+
+footer {
+    padding: 15px;
+    background-color: #616161;
+    color: #eeeeee;
+}
+
+.navbar-logo {
+    width: 30px;
+    height: auto;
+    line-height: 30px;
+}
+
+.home-background-image {
+    width: 100%;
+}
+
+.registration-banner {
+    margin-top: 100px;
+}
+
+.registration-banner h2 {
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+.registration-area {
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #eeeeee;
+}
+
+.registration-area h4 {
+    margin-bottom: 20px;
+}
+
+.about-us {
+    margin-top: 50px;
+    padding: 15px;
+    background-color: #eeeeee;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.about-us img {
+    width: 100%;
+}
+
+.about-us h3 {
+    margin-bottom: 15px;
+}
