@@ -30,15 +30,15 @@ CREATE TABLE IF NOT EXISTS `t_geoinfo` (
 CREATE TABLE IF NOT EXISTS `t_bilder` (
   `pk_bild_id` int(11) NOT NULL AUTO_INCREMENT,
   `fk_pk_username` varchar(64) NOT NULL,
-  `fk_pk_geoinfo_id` varchar(64) NOT NULL,
+  `fk_pk_geoinfo_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `geoinfo` varchar(50) NOT NULL,
   `aufnahmedatum` DATE NOT NULL,
   `directory` TEXT NOT NULL,
   `thumbnail_directory` TEXT NOT NULL,
   PRIMARY KEY (`pk_bild_id`),
-  FOREIGN KEY (`fk_pk_username`) REFERENCES t_logindaten (`pk_username`),
-  FOREIGN KEY (`fk_pk_geoinfo_id`) REFERENCES t_geoinfo (`pk_geoinfo_id`)
+  FOREIGN KEY (`fk_pk_username`) REFERENCES `t_logindaten` (`pk_username`),
+  FOREIGN KEY (`fk_pk_geoinfo_id`) REFERENCES `t_geoinfo` (`pk_geoinfo_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 CREATE TABLE IF NOT EXISTS `t_user_access` (
@@ -49,14 +49,14 @@ CREATE TABLE IF NOT EXISTS `t_user_access` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 CREATE TABLE IF NOT EXISTS `t_tags` (
-  `tags` varchar(32) NOT NULL,
-   PRIMARY KEY (`tags`),
+  `pk_tags` varchar(32) NOT NULL,
+   PRIMARY KEY (`pk_tags`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 CREATE TABLE IF NOT EXISTS `t_tags_included` (
-  `fk_pk_tags_id` int(11) NOT NULL,
+  `fk_pk_tags` varchar(32) NOT NULL,
   `fk_pk_bild_id` int(11) NOT NULL,
-  FOREIGN KEY (`fk_pk_tags_id`) REFERENCES t_tags (`pk_tags_id`),
+  FOREIGN KEY (`fk_pk_tags`) REFERENCES t_tags (`pk_tags`),
   FOREIGN KEY (`fk_pk_bild_id`) REFERENCES t_bilder (`pk_bild_id`),
-  PRIMARY KEY (`fk_pk_tags_id`, `fk_pk_bild_id`)
+  PRIMARY KEY (`fk_pk_tags`, `fk_pk_bild_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
