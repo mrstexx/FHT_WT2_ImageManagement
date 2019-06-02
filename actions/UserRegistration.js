@@ -12,7 +12,7 @@ $("#reg_form").on("submit", function (e) {
                     payload.error_message +
                     "</div>");
             } else {
-                $("#alertRegistration").append("<div class=\"alert alert-danger\" role=\"alert\">\n" +
+                $("#alertRegistration").append("<div class=\"alert alert-success\" role=\"alert\">\n" +
                     payload.success_message +
                     "</div>");
             }
