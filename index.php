@@ -1,3 +1,6 @@
+<?php
+include "./inc/Registration.php";
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -55,7 +58,7 @@
                 <div class="col-md-5">
                     <div class="registration-area">
                         <h4>Create new account</h4>
-                        <form class="form" role="form" action="" method="POST">
+                        <form id="reg_form" class="form" role="form" action="" method="POST">
                             <div class="form-group item">
                                 <input id="registrate_vorname" placeholder="Vorname"
                                        class="form-control form-control-sm"
@@ -90,6 +93,7 @@
                             </div>
                         </form>
                     </div>
+                    <div id="alertRegistration"></div>
                 </div>
             </div>
         </div>
@@ -127,5 +131,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+        <script src="./actions/userregistration.js"></script>
 </body>
 </html>
