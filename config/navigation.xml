@@ -1,0 +1,17 @@
+<nav>
+    <anonym>
+        <section page="home.php">Home</section>
+        <section page="help.php">Help</section>
+    </anonym>
+    <user>
+        <section page="home.php">Home</section>
+        <section page="home.php">Help</section>
+        <section page="feed.php">Feed</section>
+        <section page="manager.php">Manager</section>
+    </user>
+    <admin>
+        <section page="home.php">Home</section>
+        <section page="help.php">Help</section>
+        <section page="userSettings.php">User Settings</section>
+    </admin>
+</nav>
