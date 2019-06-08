@@ -27,7 +27,6 @@ if (isset($_GET["page"])) {
 }
 ?>
 
-
 <?php
 include "inc/footer.php";
 ?>

@@ -64,15 +64,22 @@ function setActiveNavbar($pageName)
             }
             ?>
         </ul>
-        <form id="login_form" class="form-inline my-2 my-lg-0" role="form" action="" method="POST">
-            <input id="tooltip_user" type="" data-toggle="tooltip" data-placement="bottom"
-                   title="Input your username or email" class="form-control form-control-sm mr-sm-2 test"
-                   name="login_name" placeholder="Email or username" required>
-            <input data-toggle="tooltip" data-placement="bottom" title="Input your password"
-                   class="form-control form-control-sm mr-sm-2" type="password" name="login_pw" placeholder="Password"
-                   aria-label="password" required>
-            <button class="btn btn-sm btn-outline-dark my-2 my-sm-0" type="submit">Login <i
-                        class="fas fa-sign-in-alt"></i></button>
-        </form>
+        <?php
+        if (isset($isAdmin)) {
+            echo "Logged as: " . $_SESSION["user"];
+        } else {
+            echo "<form id=\"login_form\" class=\"form-inline my-2 my-lg-0\" role=\"form\" action=\"\" method=\"POST\">
+                    <input id=\"tooltip_user\" type=\"\" data-toggle=\"tooltip\" data-placement=\"bottom\"
+                        title=\"Input your username or email\" class=\"form-control form-control-sm mr-sm-2 test\"
+                         name=\"login_name\" placeholder=\"Email or username\" required>
+                    <input data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Input your password\"
+                        class=\"form-control form-control-sm mr-sm-2\" type=\"password\" name=\"login_pw\" placeholder=\"Password\"
+                        aria-label=\"password\" required>
+                    <button class=\"btn btn-sm btn-outline-dark my-2 my-sm-0\" type=\"submit\">Login <i
+                        class=\"fas fa-sign-in-alt\"></i></button>
+                </form>";
+        }
+        ?>
+
     </div>
 </nav>

@@ -66,4 +66,15 @@ class User
         return false;
     }
 
+    public static function getFirstAndLastName($username)
+    {
+        $db = new Database();
+        if ($db->connect()) {
+            $result = $db->getFirstAndLastName($username);
+            if ($result != null) {
+                return $result;
+            }
+        }
+        return null;
+    }
 }

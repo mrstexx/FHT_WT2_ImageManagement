@@ -57,7 +57,7 @@ class Database {
         $user_existing = false;
         $user_selected;
         $pw_selected;
-        if($user_info[0] == ''){ 
+        if($user_info[0] == ''){
             $sql = "SELECT email FROM t_logindaten WHERE email = ?";
             $select = $this->con->prepare($sql);
             $select->bind_param("s", $user_info[4]);
@@ -82,7 +82,7 @@ class Database {
                 return -1;       // email does not match
             }
         }
-        else{ 
+        else{
         $sql = "SELECT pk_username FROM t_logindaten WHERE pk_username = ?";
         $select = $this->con->prepare($sql);
         $select->bind_param("s", $user_info[0]);
@@ -107,7 +107,7 @@ class Database {
             return -1;       // username does not match
         }
     }
-        
+
     }
 
     public function select_username($user_object){
@@ -121,6 +121,17 @@ class Database {
             $select->fetch();
             $select->close();
             return $user_selected;
+    }
+
+    public function getFirstAndLastName($userName) {
+        $result = null;
+        $sql = "SELECT vorname, nachname FROM t_logindaten WHERE pk_username='" . $userName. "'";
+        $result = $this->con->query($sql);
+        if ($result->num_rows == 1) {
+            $result = $result->fetch_object();
+            return $result;
+        }
+        return null;
     }
 
     public function select_admin($userName) {

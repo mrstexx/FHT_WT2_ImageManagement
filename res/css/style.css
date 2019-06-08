@@ -42,6 +42,7 @@ footer {
 
 .registration-area h4 {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .about-us {
@@ -58,6 +59,10 @@ footer {
 
 .about-us h3 {
     margin-bottom: 15px;
+}
+
+.btn-dark a {
+    text-decoration: none;
 }
 
 .test + .tooltip > .tooltip-inner {
