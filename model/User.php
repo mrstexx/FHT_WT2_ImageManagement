@@ -42,4 +42,8 @@ class User {
         }
     }
 
+    public function get_username($database){
+        return $database->select_username($this);
+    }
+
 }

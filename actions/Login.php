@@ -36,6 +36,7 @@ if(isset($_POST['login_name'])){
         //check if email or username is entered
         if(!$is_email){
             $user = new User($login_name,'', '', '', $login_pw);
+            $username = $login_name;
         }
         else{
             $user = new User('','', '', $login_name, $login_pw);
@@ -43,9 +44,12 @@ if(isset($_POST['login_name'])){
         if ($db->connect()) {
             $try_login = $user->login($db);
             if ($try_login == 0) {
+                if($is_email){
+                    $username=$user->get_username($db);
+                }
                 $login_success = true;
                 $ret_obj->error = false;
-                $ret_obj->success_message = "Hi";
+                $_SESSION['user'] = $username;
                 echo (json_encode($ret_obj));
             } else if($try_login == -1){
                 $ret_obj->error = true;

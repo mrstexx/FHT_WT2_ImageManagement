@@ -28,6 +28,15 @@ class Database {
             }
         }
         $result->close();
+        $sql_email = "SELECT email FROM t_logindaten";
+        $result_mail = $this->con->query($sql_email);
+        while ($row = $result_mail->fetch_object()) {
+            if ($row->email == $user_info[4]) {
+                $result_mail->close();
+                return false;
+            }
+        }
+        $result_mail->close();
         $sql = "INSERT INTO t_logindaten (pk_username, password, vorname ,nachname, email, status, admin) VALUES (?, ?, ?, ?, ?, 1, 0)";
         $insert = $this->con->prepare($sql);
         $pwhashed = password_hash($user_info[1], PASSWORD_DEFAULT);
@@ -98,6 +107,19 @@ class Database {
         }
     }
         
+    }
+
+    public function select_username($user_object){
+        $user_info = $user_object->get_userinfo();
+        $user_selected;
+        $sql = "SELECT pk_username FROM t_logindaten WHERE email = ?";
+            $select = $this->con->prepare($sql);
+            $select->bind_param("s", $user_info[4]);
+            $select->execute();
+            $select->bind_result($user_selected);
+            $select->fetch();
+            $select->close();
+            return $user_selected;
     }
 
 }
