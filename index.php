@@ -1,5 +1,6 @@
 <?php
-include "inc/Registration.php";
+include "actions/Login.php";
+include "actions/Registration.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -38,9 +39,9 @@ include "inc/Registration.php";
                 <a class="nav-link" href="#"><i class="fas fa-info-circle"></i> Help</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input type="email" class="form-control form-control-sm mr-sm-2" placeholder="Email or username">
-            <input class="form-control form-control-sm mr-sm-2" type="password" placeholder="Password"
+        <form id="login_form" class="form-inline my-2 my-lg-0" role="form" action="" method="POST">
+            <input id="tooltip_user" type="" data-toggle="tooltip" data-placement="bottom" title="Input your username or email" class="form-control form-control-sm mr-sm-2 test" name="login_name" placeholder="Email or username">
+            <input data-toggle="tooltip" data-placement="bottom" title="Input your password" class="form-control form-control-sm mr-sm-2" type="password" name="login_pw" placeholder="Password"
                    aria-label="password">
             <button class="btn btn-sm btn-outline-dark my-2 my-sm-0" type="submit">Login <i
                         class="fas fa-sign-in-alt"></i></button>
@@ -131,6 +132,8 @@ include "inc/Registration.php";
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-        <script src="./actions/UserRegistration.js"></script>
+        <script src="./js/actions/UserRegistration.js"></script>
+        <script src="./js/actions/UserLogin.js"></script>
+        <script src="./js/tooltip_activate.js"></script>
 </body>
 </html>

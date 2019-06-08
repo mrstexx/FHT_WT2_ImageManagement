@@ -42,4 +42,62 @@ class Database {
         }
     }
 
+    public function login($user_object){
+        $user_info = $user_object->get_userinfo();
+        $user_existing = false;
+        $user_selected;
+        $pw_selected;
+        if($user_info[0] == ''){ 
+            $sql = "SELECT email FROM t_logindaten WHERE email = ?";
+            $select = $this->con->prepare($sql);
+            $select->bind_param("s", $user_info[4]);
+            $select->execute();
+            $select->bind_result($user_selected);
+            $select->fetch();
+            $select->close();
+            if($user_selected == $user_info[4]){
+                $sqlpw = "SELECT password FROM t_logindaten WHERE email = '".$user_selected."'";
+                $result = $this->con->query($sqlpw);
+                $result = $result->fetch_object();
+                $pwdb= $result->password;
+                if(password_verify($user_info[1], $pwdb)){
+                    echo 'login success';
+                    return 0;
+                }
+                else {
+                    return -1;     //password does not match
+                }
+            }
+            else{
+                return -1;       // email does not match
+            }
+        }
+        else{ 
+        $sql = "SELECT pk_username FROM t_logindaten WHERE pk_username = ?";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("s", $user_info[0]);
+        $select->execute();
+        $select->bind_result($user_selected);
+        $select->fetch();
+        $select->close();
+        if($user_selected == $user_info[0]){
+            $sqlpw = "SELECT password FROM t_logindaten WHERE pk_username ='".$user_selected."'";
+            $result = $this->con->query($sqlpw);
+            $result = $result->fetch_object();
+            $pwdb= $result->password;
+                if(password_verify($user_info[1], $pwdb)){
+                    echo 'login success';
+                    return 0;
+                }
+                else {
+                    return -1; //password does not match
+                }
+        }
+        else{
+            return -1;       // username does not match
+        }
+    }
+        
+    }
+
 }

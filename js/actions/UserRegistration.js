@@ -3,7 +3,7 @@ $("#reg_form").on("submit", function (e) {
     $("#alertRegistration").empty(); // empty html for alert message
     $.ajax({
         type: "POST",
-        url: "./inc/Registration.php",
+        url: "./actions/Registration.php",
         data: $(this).serialize(),
         success: function (response) {
             var payload = JSON.parse(response);

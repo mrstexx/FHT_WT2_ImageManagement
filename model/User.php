@@ -34,4 +34,12 @@ class User {
         }
     }
 
+    public function login($database){
+        if($database->login($this)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

@@ -1,11 +1,11 @@
 <?php
 $documentRoot = $_SERVER['PHP_SELF'];
 if (strpos($documentRoot, 'Registration.php') != false) {
-    include "../model/User.php";
-    include "../model/Database.php";
+    require_once("../model/User.php");
+    require_once("../model/Database.php");
 } else {
-    include "./model/User.php";
-    include "./model/Database.php";
+    require_once("./model/User.php");
+    require_once("./model/Database.php");
 }
 ?>
 
@@ -32,6 +32,7 @@ if (isset($_POST["register_vorname"])) {
         if (!isset($_POST[$fieldname]) || empty($_POST[$fieldname])) {
             $ret_obj->error_message = 'Field is missing. Please fill out the full form';
             $ret_obj->error = true;
+            $error = true;
         }
     }
     if ($error == false) {
