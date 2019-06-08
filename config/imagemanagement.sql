@@ -11,7 +11,7 @@ USE `imagemanagement`;
 
 CREATE TABLE IF NOT EXISTS `t_logindaten` (
   `pk_username` varchar(64) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `vorname` varchar(50) NOT NULL,
   `nachname` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
