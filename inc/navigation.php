@@ -1,5 +1,55 @@
+<?php
+$navigation = null;
+$xmlData = simplexml_load_file("config/navigation.xml");
+if (isset($isAdmin)) {
+    if ($isAdmin) {
+        $navigation = $xmlData->admin;
+    } else {
+        $navigation = $xmlData->user;
+    }
+} else {
+    $navigation = $xmlData->anonym;
+}
+
+function createNavbarItem($pageTitle, $pageName)
+{
+    return "<li class=\"nav-item " . setActiveNavbar($pageName) . "\">
+                <a class=\"nav-link\" href=\"?page=" . $pageName . "\"><i class=\"fas fa-" . getIcon($pageName) .
+        "\"></i> " . $pageTitle . "</a>   
+        </li>";
+}
+
+function getIcon($pageName)
+{
+    switch ($pageName[0]) {
+        case "home":
+            return "home";
+        case "help":
+            return "info-circle";
+        case "feed":
+            return "images";
+        case "manager":
+            return "cogs";
+        case "useraccount":
+            return "user-cog";
+    }
+    return "";
+}
+
+function setActiveNavbar($pageName)
+{
+    $temp = $pageName[0]->__toString();
+    if (strpos($_SERVER["REQUEST_URI"], $temp)) {
+        return "active";
+    } else if (!strpos($_SERVER["REQUEST_URI"], "page") && $temp == "home") {
+        return "active";
+    }
+    return "";
+}
+
+?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="?page=home">
         <img class="navbar-logo" src="res/img/fav-logo.png" alt="Logo image">
         Image Manager</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -8,18 +58,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#"><i class="fas fa-home"></i> Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-info-circle"></i> Help</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-images"></i> Feed</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-cogs"></i> Manager</a>
-            </li>
+            <?php
+            for ($i = 0; $i < sizeof($navigation->section); $i++) {
+                echo createNavbarItem($navigation->section[$i][0], $navigation->section[$i][0]->attributes()[0]);
+            }
+            ?>
         </ul>
         <form id="login_form" class="form-inline my-2 my-lg-0" role="form" action="" method="POST">
             <input id="tooltip_user" type="" data-toggle="tooltip" data-placement="bottom"

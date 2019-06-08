@@ -15,6 +15,7 @@ class Database {
         if ($this->con != NULL) {
             return ($this->con)->close();
         }
+        return false;
     }
 
     public function register($user_object) {
@@ -70,7 +71,7 @@ class Database {
                 $result = $result->fetch_object();
                 $pwdb= $result->password;
                 if(password_verify($user_info[1], $pwdb)){
-                    echo 'login success';
+                    // echo 'login success';
                     return 0;
                 }
                 else {
@@ -95,7 +96,7 @@ class Database {
             $result = $result->fetch_object();
             $pwdb= $result->password;
                 if(password_verify($user_info[1], $pwdb)){
-                    echo 'login success';
+                    // echo 'login success';
                     return 0;
                 }
                 else {
@@ -111,7 +112,7 @@ class Database {
 
     public function select_username($user_object){
         $user_info = $user_object->get_userinfo();
-        $user_selected;
+        $user_selected = "";
         $sql = "SELECT pk_username FROM t_logindaten WHERE email = ?";
             $select = $this->con->prepare($sql);
             $select->bind_param("s", $user_info[4]);
@@ -122,4 +123,15 @@ class Database {
             return $user_selected;
     }
 
+    public function select_admin($userName) {
+        $result = "";
+        $sql = "SELECT admin FROM t_logindaten WHERE pk_username=?";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("s", $userName);
+        $select->execute();
+        $select->bind_result($result);
+        $select->fetch();
+        $select->close();
+        return $result;
+    }
 }

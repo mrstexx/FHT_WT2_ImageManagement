@@ -1,4 +1,5 @@
 <?php
+session_start();
 $documentRoot = $_SERVER['PHP_SELF'];
 if (strpos($documentRoot, 'Login.php') != false) {
     include("../model/User.php");
