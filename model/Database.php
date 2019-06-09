@@ -18,7 +18,7 @@ class Database {
     }
 
     public function register($user_object) {
-        $user_info = $user_object->get_userinfo();
+        $user_info = $user_object->temp_userinfo();
         $sql_username = "SELECT pk_username FROM t_logindaten";
         $result = $this->con->query($sql_username);
         while ($row = $result->fetch_object()) {
@@ -52,7 +52,7 @@ class Database {
     }
 
     public function login($user_object){
-        $user_info = $user_object->get_userinfo();
+        $user_info = $user_object->temp_userinfo();
         $user_existing = false;
         $user_selected;
         $pw_selected;
@@ -110,7 +110,7 @@ class Database {
     }
 
     public function select_username($user_object){
-        $user_info = $user_object->get_userinfo();
+        $user_info = $user_object->temp_userinfo();
         $user_selected;
         $sql = "SELECT pk_username FROM t_logindaten WHERE email = ?";
             $select = $this->con->prepare($sql);
@@ -120,6 +120,19 @@ class Database {
             $select->fetch();
             $select->close();
             return $user_selected;
+    }
+
+    public function fetch_accountinfo($user_object){
+        $user_info = $user_object->temp_userinfo();
+        $username = $user_info[0];
+        $sql = "SELECT vorname, nachname, email FROM t_logindaten WHERE pk_username = ?";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("s", $username);
+        $select->execute();
+        $result = $select->get_result();
+        $user_data = $result->fetch_assoc();
+        $select->close();
+        return $userData;
     }
 
 }

@@ -21,7 +21,7 @@ class User {
         $this->password = $reg_password;
     }
 
-    public function get_userinfo() {
+    public function temp_userinfo() {
         $user_info = array($this->username, $this->password, $this->vorname, $this->nachname, $this->mail);
         return $user_info;
     }
@@ -44,6 +44,10 @@ class User {
 
     public function get_username($database){
         return $database->select_username($this);
+    }
+    
+    public function account_info($database){
+        return $database->fetch_accountinfo($this);
     }
 
 }
