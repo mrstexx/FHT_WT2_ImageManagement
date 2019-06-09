@@ -32,6 +32,8 @@ function getIcon($pageName)
             return "cogs";
         case "useraccount":
             return "user-cog";
+        case "userdata":
+            return "user-cog";
     }
     return "";
 }

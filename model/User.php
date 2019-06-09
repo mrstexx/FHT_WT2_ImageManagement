@@ -81,4 +81,11 @@ class User
         }
         return null;
     }
+    public function update_userinfo($database){
+        if ($database->update_user($this)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

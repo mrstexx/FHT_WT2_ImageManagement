@@ -133,7 +133,7 @@ class Database {
         $result = $select->get_result();
         $user_data = $result->fetch_assoc();
         $select->close();
-        return $userData;
+        return $user_data;
     }
 
     public function getFirstAndLastName($userName) {
@@ -158,4 +158,43 @@ class Database {
         $select->close();
         return $result;
     }
+    public function update_user($user_object){
+        $user_info = $user_object->get_userinfo();
+        $vorname = $user_info[2];
+        $nachname = $user_info[3];
+        $mail = $user_info[4];
+        $sqlup = "UPDATE t_logindaten SET vorname=?, nachname=?, email=? WHERE pk_username = ?";
+        $update = $this->con->prepare($sqlup);
+        $update->bind_param("ssss", $vorname, $nachname, $mail, $username);
+        if($update->execute()){
+            $update->close();
+            return true;
+        }
+        else{
+           $update->close();
+           return false;
+        }
+    }
+
+    public function update_password($user_name, $password_old, $password_new){
+        $sqlpw = "SELECT password FROM t_logindaten WHERE pk_username ='".$user_name."'";
+        $result = $this->con->query($sqlpw);
+        $result = $result->fetch_object();
+        $pwdb= $result->password;
+        //check if old password matches db password
+        if(password_verify($password_old, $pwdb)){
+            //hash new password and update db
+            $pwhashed = password_hash($password_new, PASSWORD_DEFAULT);
+            $sqlup = "UPDATE t_logindaten SET password=? WHERE pk_username = ?";
+            $update = $this->con->prepare($sqlup);
+            $update->bind_param("ss", $pwhashed, $user_name);            
+            $update->execute();
+            $update->close();
+            return true;
+            }
+        //old password wasnt correct
+        else{
+            return false;
+        }
+}
 }

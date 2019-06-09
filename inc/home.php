@@ -14,7 +14,8 @@
                             echo "<h4>Welcome back " . $userData->vorname . " " . $userData->nachname . "</h4>
                                   <br>
                                   <a href='?page=feed' class=\"btn btn-secondary btn-block\">Check new posts</a>
-                                  <a href='?page=manager' class=\"btn btn-secondary btn-block\">Manage your images</a>";
+                                  <a href='?page=manager' class=\"btn btn-secondary btn-block\">Manage your images</a>
+                                  <a href='?page=userdata' class=\"btn btn-secondary btn-block\">Change your personal information</a>";
                         } else {
                             echo "<h4>Create new account</h4>
                                 <form id=\"reg_form\" class=\"form\" role=\"form\" action=\"\" method=\"POST\">
@@ -91,3 +92,5 @@
 <script src="./js/actions/UserRegistration.js"></script>
 <script src="./js/actions/UserLogin.js"></script>
 <script src="./js/tooltip_activate.js"></script>
+<script src="./js/actions/update_userdata.js"></script>
+<script src="./js/actions/update_userpassword.js"></script>
