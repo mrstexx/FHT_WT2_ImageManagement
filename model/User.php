@@ -51,8 +51,9 @@ class User
     {
         return $database->select_username($this);
     }
-    
-    public function account_info($database){
+
+    public function account_info($database)
+    {
         return $database->fetch_accountinfo($this);
     }
 
@@ -60,23 +61,37 @@ class User
     {
         $db = new Database();
         if ($db->connect()) {
-            $result = $db->select_admin($userName);
+            $result = $db->fetch_accountinfo($userName);
             if ($result) {
-                $db->close_con();
-                return true;
+                if ($result["admin"]) {
+                    $db->close_con();
+                    return true;
+                }
             }
         }
         $db->close_con();
         return false;
     }
 
-    public static function getFirstAndLastName($username)
+    public static function getFirstName($username)
     {
         $db = new Database();
         if ($db->connect()) {
-            $result = $db->getFirstAndLastName($username);
+            $result = $db->fetch_accountinfo($username);
             if ($result != null) {
-                return $result;
+                return $result["vorname"];
+            }
+        }
+        return null;
+    }
+
+    public static function getLastName($username)
+    {
+        $db = new Database();
+        if ($db->connect()) {
+            $result = $db->fetch_accountinfo($username);
+            if ($result != null) {
+                return $result["nachname"];
             }
         }
         return null;

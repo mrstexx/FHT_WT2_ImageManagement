@@ -55,8 +55,8 @@ class Database {
     public function login($user_object){
         $user_info = $user_object->get_userinfo();
         $user_existing = false;
-        $user_selected;
-        $pw_selected;
+        $user_selected = null;
+        $pw_selected = null;
         if($user_info[0] == ''){
             $sql = "SELECT email FROM t_logindaten WHERE email = ?";
             $select = $this->con->prepare($sql);
@@ -123,39 +123,21 @@ class Database {
             return $user_selected;
     }
 
-    public function fetch_accountinfo($user_object){
-        $user_info = $user_object->get_userinfo();
-        $username = $user_info[0];
-        $sql = "SELECT vorname, nachname, email FROM t_logindaten WHERE pk_username = ?";
+    public function fetch_accountinfo($user_data){
+        $username = null;
+        if (is_string($user_data)) {
+            $username = $user_data;
+        } else {
+            $user_info = $user_data->get_userinfo();
+            $username = $user_info[0];
+        }
+        $sql = "SELECT vorname, nachname, email, admin FROM t_logindaten WHERE pk_username = ?";
         $select = $this->con->prepare($sql);
         $select->bind_param("s", $username);
         $select->execute();
         $result = $select->get_result();
         $user_data = $result->fetch_assoc();
         $select->close();
-        return $userData;
-    }
-
-    public function getFirstAndLastName($userName) {
-        $result = null;
-        $sql = "SELECT vorname, nachname FROM t_logindaten WHERE pk_username='" . $userName. "'";
-        $result = $this->con->query($sql);
-        if ($result->num_rows == 1) {
-            $result = $result->fetch_object();
-            return $result;
-        }
-        return null;
-    }
-
-    public function select_admin($userName) {
-        $result = "";
-        $sql = "SELECT admin FROM t_logindaten WHERE pk_username=?";
-        $select = $this->con->prepare($sql);
-        $select->bind_param("s", $userName);
-        $select->execute();
-        $select->bind_result($result);
-        $select->fetch();
-        $select->close();
-        return $result;
+        return $user_data;
     }
 }

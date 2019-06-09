@@ -10,8 +10,9 @@
                     <div class="registration-area">
                         <?php
                         if (isset($isAdmin)) {
-                            $userData = User::getFirstAndLastName($_SESSION["user"]);
-                            echo "<h4>Welcome back " . $userData->vorname . " " . $userData->nachname . "</h4>
+                            $firstName = User::getFirstName($_SESSION["user"]);
+                            $lastName = User::getLastName($_SESSION["user"]);
+                            echo "<h4>Welcome back " . $firstName . " " . $lastName . "</h4>
                                   <br>
                                   <a href='?page=feed' class=\"btn btn-secondary btn-block\">Check new posts</a>
                                   <a href='?page=manager' class=\"btn btn-secondary btn-block\">Manage your images</a>";
