@@ -1,17 +1,17 @@
 <nav>
     <anonym>
-        <section page="home.php">Home</section>
-        <section page="help.php">Help</section>
+        <section page="home">Home</section>
+        <section page="help">Help</section>
     </anonym>
     <user>
-        <section page="home.php">Home</section>
-        <section page="home.php">Help</section>
-        <section page="feed.php">Feed</section>
-        <section page="manager.php">Manager</section>
+        <section page="home">Home</section>
+        <section page="help">Help</section>
+        <section page="feed">Feed</section>
+        <section page="manager">Manager</section>
     </user>
     <admin>
-        <section page="home.php">Home</section>
-        <section page="help.php">Help</section>
-        <section page="userSettings.php">User Settings</section>
+        <section page="home">Home</section>
+        <section page="help">Help</section>
+        <section page="useraccount">User Settings</section>
     </admin>
 </nav>

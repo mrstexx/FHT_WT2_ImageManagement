@@ -8,42 +8,52 @@
                 </div>
                 <div class="col-md-5">
                     <div class="registration-area">
-                        <h4>Create new account</h4>
-                        <form id="reg_form" class="form" role="form" action="" method="POST">
-                            <div class="form-group item">
-                                <input id="registrate_vorname" placeholder="Vorname"
-                                       class="form-control form-control-sm"
-                                       type="text" name="register_vorname">
-                            </div>
-                            <div class="form-group item">
-                                <input id="registrate_nachname" placeholder="Nachname"
-                                       class="form-control form-control-sm" type="text" name="register_nachname">
-                            </div>
-                            <div class="form-group item">
-                                <input id="registrate_username" placeholder="Username"
-                                       class="form-control form-control-sm"
-                                       type="text" name="register_username">
-                            </div>
-                            <div class="form-group item">
-                                <input id="registrate_mail" placeholder="name@example.com"
-                                       class="form-control form-control-sm" type="text" name="register_mail">
-                            </div>
-                            <div class="form-group item">
-                                <input id="registrate_password1" placeholder="Password"
-                                       class="form-control form-control-sm" type="password" name="register_password1">
-                            </div>
-                            <div class="form-group item">
-                                <input id="registrate_password2" placeholder="Password"
-                                       class="form-control form-control-sm" type="password" name="register_password2">
-                            </div>
-
-                            <div class="form-group item">
-                                <button type="submit" value="continue" name="register_submit"
-                                        class="btn btn-dark btn-block">Join the club
-                                </button>
-                            </div>
-                        </form>
-                        <div id="alertRegistration"></div>
+                        <?php
+                        if (isset($isAdmin)) {
+                            $userData = User::getFirstAndLastName($_SESSION["user"]);
+                            echo "<h4>Welcome back " . $userData->vorname . " " . $userData->nachname . "</h4>
+                                  <br>
+                                  <a href='?page=feed' class=\"btn btn-secondary btn-block\">Check new posts</a>
+                                  <a href='?page=manager' class=\"btn btn-secondary btn-block\">Manage your images</a>";
+                        } else {
+                            echo "<h4>Create new account</h4>
+                                <form id=\"reg_form\" class=\"form\" role=\"form\" action=\"\" method=\"POST\">
+                                    <div class=\"form-group item\">
+                                        <input id=\"registrate_vorname\" placeholder=\"Vorname\"
+                                               class=\"form-control form-control-sm\"
+                                               type=\"text\" name=\"register_vorname\">
+                                    </div>
+                                    <div class=\"form-group item\">
+                                        <input id=\"registrate_nachname\" placeholder=\"Nachname\"
+                                               class=\"form-control form-control-sm\" type=\"text\" name=\"register_nachname\">
+                                    </div>
+                                    <div class=\"form-group item\">
+                                        <input id=\"registrate_username\" placeholder=\"Username\"
+                                               class=\"form-control form-control-sm\"
+                                               type=\"text\" name=\"register_username\">
+                                    </div>
+                                    <div class=\"form-group item\">
+                                        <input id=\"registrate_mail\" placeholder=\"name@example.com\"
+                                               class=\"form-control form-control-sm\" type=\"text\" name=\"register_mail\">
+                                    </div>
+                                    <div class=\"form-group item\">
+                                        <input id=\"registrate_password1\" placeholder=\"Password\"
+                                               class=\"form-control form-control-sm\" type=\"password\" name=\"register_password1\">
+                                    </div>
+                                    <div class=\"form-group item\">
+                                        <input id=\"registrate_password2\" placeholder=\"Password\"
+                                               class=\"form-control form-control-sm\" type=\"password\" name=\"register_password2\">
+                                    </div>
+        
+                                    <div class=\"form-group item\">
+                                        <button type=\"submit\" value=\"continue\" name=\"register_submit\"
+                                                class=\"btn btn-secondary btn-block\">Join the club
+                                        </button>
+                                    </div>
+                                </form>
+                                <div id=\"alertRegistration\"></div>";
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
