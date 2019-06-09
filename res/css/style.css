@@ -124,3 +124,7 @@ footer {
         margin-left: -13rem;
     }
 }
+
+.subpage-active {
+    background-color: #dae0e5 !important;
+}
