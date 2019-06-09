@@ -1,3 +1,4 @@
+/* GENERAL DESIGN */
 html, body {
     height: 100%;
     background-color: #bbdefb;
@@ -15,12 +16,15 @@ footer {
     color: #eeeeee;
 }
 
+/* NAVBAR DESIGN */
+
 .navbar-logo {
     width: 30px;
     height: auto;
     line-height: 30px;
 }
 
+/* HOME PAGE DESIGN */
 .home-background-image {
     width: 100%;
 }
@@ -66,9 +70,61 @@ footer {
 }
 
 .test + .tooltip > .tooltip-inner {
-    background-color: #73AD21; 
-    color: #FFFFFF; 
-    border: 1px solid green; 
+    background-color: #73AD21;
+    color: #FFFFFF;
+    border: 1px solid green;
     padding: 15px;
     font-size: 20px;
-  }
+}
+
+/* MANAGER DESIGN */
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -13rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+    width: 13rem;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+    background-color: #f8f9fa;
+    margin: 20px 0px;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+        background-color: #f8f9fa;
+        margin: 20px;
+        border-radius: 15px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -13rem;
+    }
+}
+
+.subpage-active {
+    background-color: #dae0e5 !important;
+}

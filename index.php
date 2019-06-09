@@ -21,7 +21,11 @@ include "inc/navigation.php";
 <?php
 if (isset($_GET["page"])) {
     $pageName = $_GET["page"];
-    include "inc/" . $pageName . ".php";
+    if ($pageName != "") {
+        include "inc/" . $pageName . ".php";
+    } else {
+        include "inc/home.php";
+    }
 } else {
     include "inc/home.php";
 }
