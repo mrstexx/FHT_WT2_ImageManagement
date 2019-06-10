@@ -140,7 +140,7 @@ class Database {
         $select->close();
         return $user_data;
     }
-    
+
     public function update_user($user_object){
         $user_info = $user_object->get_userinfo();
         $username = $user_info[0];
@@ -208,5 +208,44 @@ class Database {
         }
         $select->close();
         return $images;
+    }
+
+    public function checkImageName($imageName) {
+        $sql = "SELECT name FROM t_bilder WHERE name=?";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("s", $imageName);
+        $select->execute();
+        $result = $select->get_result();
+        $select->close();
+        if ($result->num_rows > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public function getImageDirectories($imageID) {
+        $sql = "SELECT directory, thumbnail_directory FROM t_bilder WHERE pk_bild_id = ?";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("s", $imageID);
+        $select->execute();
+        $result = $select->get_result();
+        $select->close();
+        if ($result) {
+            return $result->fetch_assoc();
+        }
+        return null;
+    }
+
+    public function deleteImage($imgID) {
+        $sql = "DELETE FROM t_bilder WHERE pk_bild_id = ?";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("s", $imgID);
+        $select->execute();
+        if ($select->errno == 0) {
+            $select->close();
+            return true;
+        }
+        $select->close();
+        return false;
     }
 }

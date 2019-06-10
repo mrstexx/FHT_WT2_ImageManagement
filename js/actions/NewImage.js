@@ -19,14 +19,14 @@ $("#newImage").on("submit", function (e) {
         cache: false,
         contentType: false,
         processData: false,
-        success: onSuccess,
+        success: onSuccessRenderImages,
         error: function () {
             alert("Upload error occured.");
         }
     });
 });
 
-function onSuccess(response) {
+function onSuccessRenderImages(response) {
     var imagesEl = $("#myImages");
     imagesEl.empty();
     var payload = JSON.parse(response);
@@ -41,12 +41,13 @@ function onSuccess(response) {
             imagesTemp += '<div class="col-md-6 col-lg-3 my-image">\n' +
                 '                <img src="' + allImages[i].thumbnail_directory + '"\n' +
                 '                     class="img-fluid"\n' +
+                '                     id="' + allImages[i].pk_bild_id + '"\n' +
                 '                     alt="' + allImages[i].name + '">\n' +
                 '                <div class="img-options">\n' +
                 '                   <i class="fas fa-share-square"></i>\n' +
                 '                   <i class="fas fa-hashtag"></i>\n' +
-                '                   <i class="fas fa-copy"></i>\n' +
-                '                   <i class="fas fa-trash"></i>\n' +
+                '                   <i class="fas fa-copy mng-copy"></i>\n' +
+                '                   <i class="fas fa-trash mng-delete"></i>\n' +
                 '                </div>\n' +
                 '              </div>\n';
         }

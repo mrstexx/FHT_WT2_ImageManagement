@@ -75,7 +75,7 @@ class Image
         return false;
     }
 
-    public function getAllUserImages($userName)
+    public static function getAllUserImages($userName)
     {
         $db = new Database();
         if ($db->connect()) {
@@ -85,5 +85,40 @@ class Image
         }
         $db->close_con();
         return null;
+    }
+
+    public static function isImageExisting($imageName)
+    {
+        $db = new Database();
+        if ($db->connect()) {
+            $result = $db->checkImageName($imageName);
+            if ($result) {
+                $db->close_con();
+                return true;
+            }
+        }
+        $db->close_con();
+        return false;
+    }
+
+    public static function copyImage($imageID, $userName)
+    {
+    }
+
+    public static function deleteImage($imageID, $userName)
+    {
+        $db = new Database();
+        if ($db->connect()) {
+            $imgDirs = $db->getImageDirectories($imageID);
+            $db->deleteImage($imageID);
+            // delete files from directories
+            if (file_exists($imgDirs["directory"])) {
+                unlink($imgDirs["directory"]);
+            }
+            if (file_exists("../" . $imgDirs["thumbnail_directory"])) {
+                unlink("../" . $imgDirs["thumbnail_directory"]);
+            }
+        }
+        return Image::getAllUserImages($userName);
     }
 }

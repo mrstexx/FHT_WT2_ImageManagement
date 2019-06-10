@@ -18,10 +18,16 @@ if (isset($_FILES)) {
 
         $userName = $_SESSION["user"];
         $imageName = $fileUpload["name"];
-        $dir = "../pictures/full/" . $imageName;
+        $dir = "";
+        $thumbDir = "";
+        if (!Image::isImageExisting($imageName)) {
+            $dir = "../pictures/full/" . $imageName;
+        } else {
+            $pathInfo = pathinfo($imageName);
+            $dir = "../pictures/full/" . $pathInfo['filename'] . "-dupl." . $pathInfo['extension'];
+        }
         move_uploaded_file($fileUpload['tmp_name'], $dir);
         $thumbDir = Image::saveThumbImage($dir, 400, 350);
-
         $image = new Image($userName, $imageName, $dir, $thumbDir, "");
         if ($image->addNewImage()) {
             $retObj->error = false;

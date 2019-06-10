@@ -24,17 +24,15 @@ include "model/Image.php";
     $images = Image::getAllUserImages($_SESSION["user"]);
     for ($i = 0; $i < sizeof($images); $i++) {
         echo "<div class=\"col-md-6 col-lg-3 my-image\">";
-        echo "<img src=\"" . $images[$i]["thumbnail_directory"] . "\" class=\"img-fluid\" alt=\"" . $images[$i]["name"] . "\">";
+        echo "<img id=\"" . $images[$i]["pk_bild_id"] . "\" src=\"" . $images[$i]["thumbnail_directory"] . "\" class=\"img-fluid\" alt=\"" . $images[$i]["name"] . "\">";
         echo "<div class=\"img-options\">";
         echo "<i class=\"fas fa-share-square\"></i>
             <i class=\"fas fa-hashtag\"></i>
-            <i class=\"fas fa-copy\"></i>
-            <i class=\"fas fa-trash\"></i>";
+            <i class=\"fas fa-copy mng-copy\"></i>
+            <i class=\"fas fa-trash mng-delete\"></i>";
         echo "</div>";
         echo "</div>";
     }
     echo "</div>"
     ?>
 </div>
-
-<script src="js/actions/NewImage.js"></script>
