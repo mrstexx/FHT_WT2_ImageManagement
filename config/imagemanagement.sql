@@ -30,10 +30,10 @@ CREATE TABLE IF NOT EXISTS `t_geoinfo` (
 CREATE TABLE IF NOT EXISTS `t_bilder` (
   `pk_bild_id` int(11) NOT NULL AUTO_INCREMENT,
   `fk_pk_username` varchar(64) NOT NULL,
-  `fk_pk_geoinfo_id` int(11) NOT NULL,
+  `fk_pk_geoinfo_id` int(11),
   `name` varchar(50) NOT NULL,
-  `geoinfo` varchar(50) NOT NULL,
-  `aufnahmedatum` DATE NOT NULL,
+  `geoinfo` varchar(50),
+  `aufnahmedatum` DATETIME NOT NULL,
   `directory` TEXT NOT NULL,
   `thumbnail_directory` TEXT NOT NULL,
   PRIMARY KEY (`pk_bild_id`),

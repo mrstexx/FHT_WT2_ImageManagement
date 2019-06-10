@@ -169,7 +169,7 @@ class Database {
             $pwhashed = password_hash($password_new, PASSWORD_DEFAULT);
             $sqlup = "UPDATE t_logindaten SET password=? WHERE pk_username = ?";
             $update = $this->con->prepare($sqlup);
-            $update->bind_param("ss", $pwhashed, $user_name);            
+            $update->bind_param("ss", $pwhashed, $user_name);
             $update->execute();
             $update->close();
             return true;
@@ -178,5 +178,33 @@ class Database {
         else{
             return false;
         }
-}
+    }
+
+    public function addNewImage($owner, $imageName, $directory, $thumbDir, $geoInfo) {
+        $sql = "INSERT INTO t_bilder (pk_bild_id, fk_pk_username, fk_pk_geoinfo_id , name, geoinfo, aufnahmedatum, directory, thumbnail_directory) 
+            VALUES (DEFAULT, ?, null, ?, ?, NOW(), ?, ?)";
+        $insert = $this->con->prepare($sql);
+        $insert->bind_param("sssss", $owner, $imageName, $geoInfo, $directory, $thumbDir);
+        if($insert->execute()){
+            $insert->close();
+            return true;
+        }
+        $insert->close();
+        return false;
+    }
+
+    public function fetchAllUserImages($userName)
+    {
+        $images = array();
+        $sql = "SELECT pk_bild_id, name, geoinfo, aufnahmedatum, directory, thumbnail_directory FROM t_bilder WHERE fk_pk_username = ?";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("s", $userName);
+        $select->execute();
+        $result = $select->get_result();
+        while ($row = $result->fetch_assoc()) {
+            array_push($images, $row);
+        }
+        $select->close();
+        return $images;
+    }
 }
