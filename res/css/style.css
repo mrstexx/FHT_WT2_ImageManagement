@@ -155,3 +155,19 @@ footer {
 /* EDIT IMAGE DESIGN */
 
 /* GEO POSITION DESIGN */
+
+/* USER DATA DESIGN */
+.user_data {
+    border-radius: 15px;
+    padding: 30px;
+    background-color: #f8f9fa;
+}
+
+.user_data h3 {
+    margin-bottom: 20px;
+    margin-top: 5px;
+    text-align: center;
+}
+.user_data_banner {
+    margin-top: 80px;
+}
