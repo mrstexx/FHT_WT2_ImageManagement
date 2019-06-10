@@ -67,8 +67,11 @@ function setActiveNavbar($pageName)
             ?>
         </ul>
         <?php
-        if (isset($isAdmin)) {
+        if ($isAdmin != null || $loggedUser != "") {
             echo "Logged as: " . $_SESSION["user"];
+            echo '<form class="form" role="" action="" method="POST">
+                        <button class="btn btn-outline-secondary" type="submit" name="buttonlogout" value=""><i class="fas fa-sign-out-alt"></i></button>
+                  </form>';
         } else {
             echo "<form id=\"login_form\" class=\"form-inline my-2 my-lg-0\" role=\"form\" action=\"\" method=\"POST\">
                     <input id=\"tooltip_user\" type=\"\" data-toggle=\"tooltip\" data-placement=\"bottom\"
@@ -77,6 +80,11 @@ function setActiveNavbar($pageName)
                     <input data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Input your password\"
                         class=\"form-control form-control-sm mr-sm-2\" type=\"password\" name=\"login_pw\" placeholder=\"Password\"
                         aria-label=\"password\" required>
+                        <input class=\"form-check-input\" type=\"checkbox\" name=\"checklogin\" value=\"ja\"
+                        id=\"defaultCheck1\">
+                     <label class=\"form-check-label\" for=\"defaultCheck1\">
+                     Stay logged in?
+                     </label>
                     <button class=\"btn btn-sm btn-outline-dark my-2 my-sm-0\" type=\"submit\">Login <i
                         class=\"fas fa-sign-in-alt\"></i></button>
                 </form>";

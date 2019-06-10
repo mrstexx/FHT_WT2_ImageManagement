@@ -1,10 +1,13 @@
 <?php
 include "actions/Login.php";
 include "actions/Registration.php";
+include "actions/Logout.php";
 
 $loggedUser = "";
 $isAdmin = null;
-
+if (isset($_COOKIE["userstay"])) { 
+    $_SESSION["user"] = $_COOKIE["userstay"];
+}
 if (isset($_SESSION["user"])) {
     $loggedUser = $_SESSION["user"];
     $isAdmin = User::isUserAdmin($loggedUser);

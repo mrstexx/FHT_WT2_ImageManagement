@@ -51,6 +51,10 @@ if(isset($_POST['login_name'])){
                 $login_success = true;
                 $ret_obj->error = false;
                 $_SESSION['user'] = $username;
+                if(isset($_POST['checklogin'])){
+                    setcookie("userstay", $_SESSION['user'], time() + 7 * 24 * 60 * 60, '/', 'localhost');
+                    $_COOKIE['userstay'] = $_SESSION['user'];
+                }
                 echo (json_encode($ret_obj));
             } else if($try_login == -1){
                 $ret_obj->error = true;
