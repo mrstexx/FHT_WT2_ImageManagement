@@ -140,8 +140,10 @@ class Database {
         $select->close();
         return $user_data;
     }
+    
     public function update_user($user_object){
         $user_info = $user_object->get_userinfo();
+        $username = $user_info[0];
         $vorname = $user_info[2];
         $nachname = $user_info[3];
         $mail = $user_info[4];
