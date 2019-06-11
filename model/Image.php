@@ -103,13 +103,32 @@ class Image
 
     public static function copyImage($imageID, $userName)
     {
+        $dir = "";
+        $thumbDir = "";
+        $db = new Database();
+        if ($db->connect()) {
+            $result = $db->getImageData($imageID);
+            if ($result) {
+                $imageName = $result["name"];
+                $dir = $result["directory"];
+                $pathInfo = pathInfo($dir);
+                $newDir = "../pictures/full/" . $pathInfo['filename'] . "-dupl." . $pathInfo['extension'];
+                copy($dir, $newDir);
+                $thumbDir = Image::saveThumbImage($newDir, 400, 350);
+                $image = new Image($userName, $imageName, $newDir, $thumbDir, $result["geoinfo"]);
+                if ($image->addNewImage()) {
+                    return Image::getAllUserImages($userName);
+                }
+            }
+        }
+        return null;
     }
 
     public static function deleteImage($imageID, $userName)
     {
         $db = new Database();
         if ($db->connect()) {
-            $imgDirs = $db->getImageDirectories($imageID);
+            $imgDirs = $db->getImageData($imageID);
             $db->deleteImage($imageID);
             // delete files from directories
             if (file_exists($imgDirs["directory"])) {

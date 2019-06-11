@@ -223,8 +223,8 @@ class Database {
         return false;
     }
 
-    public function getImageDirectories($imageID) {
-        $sql = "SELECT directory, thumbnail_directory FROM t_bilder WHERE pk_bild_id = ?";
+    public function getImageData($imageID) {
+        $sql = "SELECT name, directory, thumbnail_directory, geoinfo FROM t_bilder WHERE pk_bild_id = ?";
         $select = $this->con->prepare($sql);
         $select->bind_param("s", $imageID);
         $select->execute();
