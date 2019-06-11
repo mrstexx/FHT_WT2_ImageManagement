@@ -248,4 +248,46 @@ class Database {
         $select->close();
         return false;
     }
+
+    public function getUserTags($imageID) {
+        // TODO STEFAN Make safety DB query handling
+        $sql = "SELECT fk_pk_tags FROM t_tags_included WHERE fk_pk_bild_id=?";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("s", $imageID);
+        $select->execute();
+        $result = $select->get_result();
+        $tags = array();
+        while ($row = $result->fetch_assoc()) {
+            array_push($tags, $row["fk_pk_tags"]);
+        }
+        $select->close();
+        return $tags;
+    }
+
+    public function addNewTag($tagName) {
+        // TODO STEFAN Make safety DB query handling
+        $sql = "INSERT INTO t_tags VALUES(?)";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("s", $tagName);
+        $select->execute();
+        $select->close();
+    }
+
+    public function addTagToImage($imageID, $tagName) {
+        // TODO STEFAN Make safety DB query handling
+        $sql = "INSERT INTO t_tags_included VALUES(?,?)";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("ss", $tagName, $imageID);
+        $select->execute();
+        $select->close();
+    }
+
+    public function deleteTag($imageID, $tagName) {
+        // TODO STEFAN Make safety DB query handling
+        $sql = "DELETE FROM t_tags_included WHERE fk_pk_tags=? AND fk_pk_bild_id=?";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("ss", $tagName, $imageID);
+        $select->execute();
+        $select->close();
+    }
 }

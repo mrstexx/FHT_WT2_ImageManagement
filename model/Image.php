@@ -117,10 +117,12 @@ class Image
                 $thumbDir = Image::saveThumbImage($newDir, 400, 350);
                 $image = new Image($userName, $imageName, $newDir, $thumbDir, $result["geoinfo"]);
                 if ($image->addNewImage()) {
+                    $db->close_con();
                     return Image::getAllUserImages($userName);
                 }
             }
         }
+        $db->close_con();
         return null;
     }
 
@@ -138,6 +140,57 @@ class Image
                 unlink("../" . $imgDirs["thumbnail_directory"]);
             }
         }
+        $db->close_con();
         return Image::getAllUserImages($userName);
+    }
+
+    public static function getTags($imageID)
+    {
+        $db = new Database();
+        if ($db->connect()) {
+            $result = $db->getUserTags($imageID);
+            if ($result) {
+                $db->close_con();
+                return $result;
+            }
+        }
+        $db->close_con();
+        return array();
+    }
+
+    public static function updateTags($imageID, $tags)
+    {
+        $existingTags = Image::getTags($imageID);
+        $tagsToAdd = array();
+        $tagsToDelete = array();
+        if ($tags != null) {
+            foreach ($tags as $newTag) {
+                if (!in_array($newTag, $existingTags)) {
+                    array_push($tagsToAdd, $newTag);
+                }
+            }
+            foreach ($existingTags as $tag) {
+                if (!in_array($tag, $tagsToAdd) && !in_array($tag, $tags)) {
+                    array_push($tagsToDelete, $tag);
+                }
+            }
+        } else {
+            foreach ($existingTags as $tag) {
+                array_push($tagsToDelete, $tag);
+            }
+        }
+
+        $db = new Database();
+        if ($db->connect()) {
+            for ($i = 0; $i < sizeof($tagsToAdd); $i++) {
+                $db->addNewTag($tagsToAdd[$i]);
+                $db->addTagToImage($imageID, $tagsToAdd[$i]);
+            }
+            for ($i = 0; $i < sizeof($tagsToDelete); $i++) {
+                $db->deleteTag($imageID, $tagsToDelete[$i]);
+            }
+        }
+        $db->close_con();
+        return Image::getTags($imageID);
     }
 }

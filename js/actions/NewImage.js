@@ -44,8 +44,8 @@ function onSuccessRenderImages(response) {
                 '                     id="' + allImages[i].pk_bild_id + '"\n' +
                 '                     alt="' + allImages[i].name + '">\n' +
                 '                <div class="img-options">\n' +
-                '                   <i class="fas fa-share-square"></i>\n' +
-                '                   <i class="fas fa-hashtag"></i>\n' +
+                '                   <i class="fas fa-share-square mng-share"></i>\n' +
+                '                   <i class="fas fa-hashtag mng-tag"></i>\n' +
                 '                   <i class="fas fa-copy mng-copy"></i>\n' +
                 '                   <i class="fas fa-trash mng-delete"></i>\n' +
                 '                </div>\n' +
