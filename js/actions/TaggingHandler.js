@@ -2,6 +2,7 @@ var currentTags = [];
 var imageID = "";
 
 $(document).on("click", ".mng-tag", function (e) {
+    $(".tag-list").empty();
     if ($(this).parent().parent().children().first()) {
         imageID = $(this).parent().parent().children().first()[0].id;
     }
@@ -22,6 +23,9 @@ function sendAction(actionType, imgID, listOfTags) {
             success: function (response) {
                 var payload = JSON.parse(response);
                 currentTags = payload.success;
+                if (actionType === "updateTags") {
+                    $('#taggingModel').modal('toggle');
+                }
                 renderAllTags();
             }
         });
