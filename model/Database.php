@@ -261,10 +261,7 @@ class Database {
         }
         return null;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> df065e2e1e711b68335b59bb1879a8ef124a15bf
+	
     public function getUserTags($imageID) {
         // TODO STEFAN Make safety DB query handling
         $sql = "SELECT fk_pk_tags FROM t_tags_included WHERE fk_pk_bild_id=?";
@@ -307,7 +304,6 @@ class Database {
         $select->close();
     }
 
-<<<<<<< HEAD
     public function getAvailableUsers($loggedUser) {
         $sql = "SELECT pk_username FROM t_logindaten WHERE status=1 AND admin=0 AND pk_username NOT LIKE ?";
         $select = $this->con->prepare($sql);
@@ -354,8 +350,7 @@ class Database {
         $result = $select->get_result();
         $select->close();
     }
-}
-=======
+
     public function get_userstatus($username){
         $sql = "SELECT status FROM t_logindaten WHERE pk_username=?";
         $select = $this->con->prepare($sql);
@@ -367,10 +362,9 @@ class Database {
         if ($user_status['status'] == 1) {
             return true;
         }
-        else{
         return false;
-        }
-    }
+	}
+	
     public function update_userstatus($username, $status){
         $newstatus = 1;
         if($status == 1){
@@ -413,6 +407,4 @@ class Database {
         $select->close();
         return $user_mail;
     }
-
 }
->>>>>>> df065e2e1e711b68335b59bb1879a8ef124a15bf
