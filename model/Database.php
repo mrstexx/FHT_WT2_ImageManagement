@@ -261,7 +261,10 @@ class Database {
         }
         return null;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> df065e2e1e711b68335b59bb1879a8ef124a15bf
     public function getUserTags($imageID) {
         // TODO STEFAN Make safety DB query handling
         $sql = "SELECT fk_pk_tags FROM t_tags_included WHERE fk_pk_bild_id=?";
@@ -304,6 +307,7 @@ class Database {
         $select->close();
     }
 
+<<<<<<< HEAD
     public function getAvailableUsers($loggedUser) {
         $sql = "SELECT pk_username FROM t_logindaten WHERE status=1 AND admin=0 AND pk_username NOT LIKE ?";
         $select = $this->con->prepare($sql);
@@ -351,3 +355,64 @@ class Database {
         $select->close();
     }
 }
+=======
+    public function get_userstatus($username){
+        $sql = "SELECT status FROM t_logindaten WHERE pk_username=?";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("s", $username);
+        $select->execute();
+        $result = $select->get_result();
+        $user_status = $result->fetch_assoc();
+        $select->close();
+        if ($user_status['status'] == 1) {
+            return true;
+        }
+        else{
+        return false;
+        }
+    }
+    public function update_userstatus($username, $status){
+        $newstatus = 1;
+        if($status == 1){
+            $newstatus = 0;
+        }
+        $sqlup = "UPDATE t_logindaten SET status=? WHERE pk_username = ?";
+        $update = $this->con->prepare($sqlup);
+        $update->bind_param("ss", $newstatus, $username);
+        if($update->execute()){
+            $update->close();
+            return true;
+        }
+        else{
+           $update->close();
+           return false;
+        }
+    }
+
+    public function pw_reset($username,$password_new){
+        $sqlup = "UPDATE t_logindaten SET password=? WHERE pk_username = ?";
+        $update = $this->con->prepare($sqlup);
+        $update->bind_param("ss", $password_new, $username);
+        if($update->execute()){
+            $update->close();
+            return true;
+        }
+        else{
+           $update->close();
+           return false;
+        }
+    }
+
+    public function get_mail($username){
+        $sql = "SELECT email FROM t_logindaten WHERE pk_username=?";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("s", $username);
+        $select->execute();
+        $result = $select->get_result();
+        $user_mail = $result->fetch_assoc();
+        $select->close();
+        return $user_mail;
+    }
+
+}
+>>>>>>> df065e2e1e711b68335b59bb1879a8ef124a15bf
