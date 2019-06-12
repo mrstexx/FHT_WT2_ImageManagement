@@ -103,4 +103,9 @@ class User
             return false;
         }
     }
+    public function send_mail(){
+        $subject="Image Manager";
+    	$message='Hallo '.$this->username.'! Ihr Password wurde von uns zurückgesetzt. Ihr neues Passwort lautet: '.$this->password;
+		mail($this->mail, $subject, $message);
+    }
 }
