@@ -62,3 +62,4 @@ function setSubpageLink($pageName)
 <script src="js/ManagerHelper.js"></script>
 <script src="./js/actions/NewImage.js"></script>
 <script src="./js/actions/ImageControl.js"></script>
+<script src="./js/actions/TaggingHandler.js"></script>

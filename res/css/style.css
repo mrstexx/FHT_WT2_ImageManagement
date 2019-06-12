@@ -152,6 +152,19 @@ footer {
     cursor: pointer;
 }
 
+.tag:hover {
+    cursor: pointer;
+}
+
+.tag {
+    margin: 0 5px;
+    font-size: 14px;
+}
+
+.tag-remove-icon {
+    margin-left: 5px;
+}
+
 /* EDIT IMAGE DESIGN */
 
 /* GEO POSITION DESIGN */
@@ -168,6 +181,7 @@ footer {
     margin-top: 5px;
     text-align: center;
 }
+
 .user_data_banner {
     margin-top: 80px;
 }
