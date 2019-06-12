@@ -248,4 +248,16 @@ class Database {
         $select->close();
         return false;
     }
+
+    public function get_users(){
+        $sql = "SELECT * FROM t_logindaten WHERE admin=0";
+        $select = $this->con->prepare($sql);
+        $select->execute();
+        $users = $select->get_result();
+        $select->close();
+        if ($users) {
+            return $users;
+        }
+        return null;
+    }
 }

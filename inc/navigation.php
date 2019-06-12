@@ -82,7 +82,7 @@ function setActiveNavbar($pageName)
                         aria-label=\"password\" required>
                         <input class=\"form-check-input\" type=\"checkbox\" name=\"checklogin\" value=\"ja\"
                         id=\"defaultCheck1\">
-                     <label class=\"form-check-label\" for=\"defaultCheck1\">
+                     <label id=\"checklog\" class=\"form-check-label\" for=\"defaultCheck1\">
                      Stay logged in?
                      </label>
                     <button class=\"btn btn-sm btn-outline-dark my-2 my-sm-0\" type=\"submit\">Login <i
