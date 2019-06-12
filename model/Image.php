@@ -193,4 +193,59 @@ class Image
         $db->close_con();
         return Image::getTags($imageID);
     }
+
+    public static function getUsersSelection($imageID, $loggedUser)
+    {
+        $db = new Database();
+        $result = array();
+        $availableUsers = array();
+        $userImageSelection = array();
+        if ($db->connect()) {
+            $availableUsers = $db->getAvailableUsers($loggedUser);
+            $userImageSelection = $db->getUserImageSelection($imageID);
+        }
+        $db->close_con();
+        foreach ($availableUsers as $user) {
+            if (in_array($user, $userImageSelection)) {
+                $result[$user] = true;
+            } else {
+                $result[$user] = false;
+            }
+        }
+        return $result;
+    }
+
+    public static function updateUserImageSelection($imageID, $selectedUsers, $loggedUser)
+    {
+        $selectionToBeAdded = array();
+        $selectionToBeDeleted = array();
+        $existingUserSelection = Image::getUsersSelection($imageID, $loggedUser);
+        if ($selectedUsers != null && sizeof($selectedUsers) != 0) {
+            foreach ($selectedUsers as $newUser) {
+                if (!$existingUserSelection[$newUser]) {
+                    array_push($selectionToBeAdded, $newUser);
+                }
+            }
+            foreach ($existingUserSelection as $user => $value) {
+                if (!in_array($user, $selectionToBeAdded) && !in_array($user, $selectedUsers)) {
+                    array_push($selectionToBeDeleted, $user);
+                }
+            }
+        } else {
+            foreach ($existingUserSelection as $user => $value) {
+                array_push($selectionToBeDeleted, $user);
+            }
+        }
+        $db = new Database();
+        if ($db->connect()) {
+            for ($i = 0; $i < sizeof($selectionToBeAdded); $i++) {
+                $db->addNewSelection($selectionToBeAdded[$i], $imageID);
+            }
+            for ($i = 0; $i < sizeof($selectionToBeDeleted); $i++) {
+                $db->deleteSelection($selectionToBeDeleted[$i], $imageID);
+            }
+        }
+        $db->close_con();
+        return Image::getUsersSelection($imageID, $loggedUser);
+    }
 }

@@ -25,6 +25,7 @@ function sendAction(actionType, imgID, listOfTags) {
                 currentTags = payload.success;
                 if (actionType === "updateTags") {
                     $('#taggingModel').modal('toggle');
+                    return;
                 }
                 renderAllTags();
             }

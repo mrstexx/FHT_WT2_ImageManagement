@@ -249,7 +249,8 @@ class Database {
         return false;
     }
 
-    public function get_users(){
+    public function get_users()
+    {
         $sql = "SELECT * FROM t_logindaten WHERE admin=0";
         $select = $this->con->prepare($sql);
         $select->execute();
@@ -259,6 +260,8 @@ class Database {
             return $users;
         }
         return null;
+    }
+
     public function getUserTags($imageID) {
         // TODO STEFAN Make safety DB query handling
         $sql = "SELECT fk_pk_tags FROM t_tags_included WHERE fk_pk_bild_id=?";
@@ -298,6 +301,53 @@ class Database {
         $select = $this->con->prepare($sql);
         $select->bind_param("ss", $tagName, $imageID);
         $select->execute();
+        $select->close();
+    }
+
+    public function getAvailableUsers($loggedUser) {
+        $sql = "SELECT pk_username FROM t_logindaten WHERE status=1 AND admin=0 AND pk_username NOT LIKE ?";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("s", $loggedUser);
+        $select->execute();
+        $result = $select->get_result();
+        $users = array();
+        while ($row = $result->fetch_assoc()) {
+            array_push($users, $row["pk_username"]);
+        }
+        $select->close();
+        return $users;
+    }
+
+    public function getUserImageSelection($imageID) {
+        $sql = "SELECT fk_pk_username FROM t_user_access WHERE fk_pk_bild_id=?";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("s", $imageID);
+        $select->execute();
+        $result = $select->get_result();
+        $users = array();
+        while ($row = $result->fetch_assoc()) {
+            array_push($users, $row["fk_pk_username"]);
+        }
+        $select->close();
+        return $users;
+    }
+
+    public function addNewSelection($userName, $imageID) {
+        // TODO STEFAN Make safety DB query handling
+        $sql = "INSERT INTO t_user_access VALUES(?,?)";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("ss", $userName, $imageID);
+        $select->execute();
+        $select->close();
+    }
+
+    public function deleteSelection($userName, $imageID) {
+        // TODO STEFAN Make safety DB query handling
+        $sql = "DELETE FROM t_user_access WHERE fk_pk_username=? AND fk_pk_bild_id=?";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("ss", $userName, $imageID);
+        $select->execute();
+        $result = $select->get_result();
         $select->close();
     }
 }

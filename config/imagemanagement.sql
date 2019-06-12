@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `t_user_access` (
   `fk_pk_username` varchar(64) NOT NULL,
   `fk_pk_bild_id` int(11) NOT NULL,
   FOREIGN KEY (`fk_pk_username`) REFERENCES t_logindaten (`pk_username`),
-  FOREIGN KEY (`fk_pk_bild_id`) REFERENCES t_bilder (`pk_bild_id`)
+  FOREIGN KEY (`fk_pk_bild_id`) REFERENCES t_bilder (`pk_bild_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 CREATE TABLE IF NOT EXISTS `t_tags` (
@@ -57,6 +57,6 @@ CREATE TABLE IF NOT EXISTS `t_tags_included` (
   `fk_pk_tags` varchar(32) NOT NULL,
   `fk_pk_bild_id` int(11) NOT NULL,
   FOREIGN KEY (`fk_pk_tags`) REFERENCES t_tags (`pk_tags`),
-  FOREIGN KEY (`fk_pk_bild_id`) REFERENCES t_bilder (`pk_bild_id`),
+  FOREIGN KEY (`fk_pk_bild_id`) REFERENCES t_bilder (`pk_bild_id`) ON DELETE CASCADE,
   PRIMARY KEY (`fk_pk_tags`, `fk_pk_bild_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;

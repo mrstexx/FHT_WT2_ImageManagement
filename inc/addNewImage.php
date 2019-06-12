@@ -62,3 +62,40 @@ include "model/Image.php";
         </div>
     </div>
 </div>
+
+<!-- Sharring Modal -->
+<div class="modal fade" id="sharingModel" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Share image with</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body share-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="checkbox" class="share-check">
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" value="Some text" readonly>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="checkbox" class="share-check">
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" value="lalalal" readonly>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary share-save">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
