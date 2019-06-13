@@ -14,6 +14,9 @@ if(isset($_POST['user_selected'])){
 		}
 		if(isset($_POST['delete_user'])){
 			//to implement delete user and cascade images
+			$images = $db->fetchAllUserImages($user);
+			$images = implode($images);
+			echo $images;
 
 		}
 		if(isset($_POST['pw_reset'])){
@@ -40,15 +43,18 @@ if(isset($_POST['user_selected'])){
 		}
 	}
 }
-else{
-	echo 'Please select a user first';
-}
 ?>
-<div id="">
+<div class="user_account_banner">
+<div id="" class="container useraccount_cont col-md-9">
+	<h3>Please select a user </h3>
+<div>
+	<input type='submit' value='Update Status' name='status_update' class='btn btn-secondary'/>
+	<input type='submit' value='Delete User' name='delete_user' class='btn btn-secondary'/>
+	<input type='submit' value='Reset password' name='pw_reset' class='btn btn-secondary'/>
 <form class="form" role="" action="" method="POST"> 
-<table class="table_user col-sm-12 col-md-6 col-lg-6">
+<table id="user_table" class="table_user col-sm-12 col-md-6 col-lg-6">
     <tr>
-        <th>Status</th>
+        <th id="ok">Status</th>
         <th>Username</th>
         <th>Vorname</th>
         <th>Nachname</th>
@@ -88,11 +94,9 @@ else{
 				</tr>
 
 			<?php }
-				echo "<td><input type='submit' value='Update Status' name='status_update' class='select btn btn-primary btn-sm'/></td>";
-			echo "<td><input type='submit' value='Delete User' name='delete_user' class='select btn btn-primary btn-sm'/></td>";
-			echo "<td><input type='submit' value='Reset password' name='pw_reset' class='select btn btn-primary btn-sm'/></td>";
-			
 		}?>
 	</table>
 	</form>
+	</div>
+	</div>
     <?php } ?>
