@@ -141,7 +141,6 @@ class Image
             }
         }
         $db->close_con();
-        return Image::getAllUserImages($userName);
     }
 
     public static function getTags($imageID)
@@ -248,4 +247,5 @@ class Image
         $db->close_con();
         return Image::getUsersSelection($imageID, $loggedUser);
     }
+    
 }

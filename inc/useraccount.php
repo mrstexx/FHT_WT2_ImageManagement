@@ -1,4 +1,10 @@
 <?php
+$documentRoot = $_SERVER['PHP_SELF'];
+if (strpos($documentRoot, 'useraccount.php') != false) {
+    include("../model/Image.php");
+} else {
+    include("./model/Image.php");
+}
 if(isset($_POST['user_selected'])){
 	$user = $_POST['user_selected'];
 	$db = new Database();
@@ -17,16 +23,10 @@ if(isset($_POST['user_selected'])){
 			// delete images and user
 			$images = $db->fetchAllUserImages($user);
 			foreach ($images as $arr) {
-				if($db->deleteImage($arr['pk_bild_id'])){
-				}
-				else {
-					echo "error deleting image";
-					$error = 1;
-				}
+				Image::deleteImage($arr['pk_bild_id'], $user);
 			}
 			if($error == 0){
 				if($db->delete_user($user)){
-
 				}
 				else{
 					echo "error deleting user";
