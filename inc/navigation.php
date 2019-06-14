@@ -68,7 +68,7 @@ function setActiveNavbar($pageName)
         </ul>
         <?php
         if ($isAdmin != null || $loggedUser != "") {
-            echo "Logged as: " . $_SESSION["user"];
+            echo "<div id='logged_div'>Logged as: " . $_SESSION["user"]."</div>";
             echo '<form class="form" role="" action="" method="POST">
                         <button class="btn btn-outline-secondary" type="submit" name="buttonlogout" value=""><i class="fas fa-sign-out-alt"></i></button>
                   </form>';

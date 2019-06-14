@@ -13,11 +13,25 @@ if(isset($_POST['user_selected'])){
 			}
 		}
 		if(isset($_POST['delete_user'])){
-			//to implement delete user and cascade images
+			$error = 0;
+			// delete images and user
 			$images = $db->fetchAllUserImages($user);
-			$images = implode($images);
-			echo $images;
+			foreach ($images as $arr) {
+				if($db->deleteImage($arr['pk_bild_id'])){
+				}
+				else {
+					echo "error deleting image";
+					$error = 1;
+				}
+			}
+			if($error == 0){
+				if($db->delete_user($user)){
 
+				}
+				else{
+					echo "error deleting user";
+				}
+			}
 		}
 		if(isset($_POST['pw_reset'])){
 			//create new pw
@@ -46,12 +60,14 @@ if(isset($_POST['user_selected'])){
 ?>
 <div class="user_account_banner">
 <div id="" class="container useraccount_cont col-md-9">
-	<h3>Please select a user </h3>
-<div>
-	<input type='submit' value='Update Status' name='status_update' class='btn btn-secondary'/>
-	<input type='submit' value='Delete User' name='delete_user' class='btn btn-secondary'/>
-	<input type='submit' value='Reset password' name='pw_reset' class='btn btn-secondary'/>
+<div id="table_div" style="overflow-x:auto;">
 <form class="form" role="" action="" method="POST"> 
+<div id="heading_table">
+<h3>Please select a user </h3>
+	<input type='submit' value='Update Status' name='status_update' class='acc_btn btn btn-secondary'/>
+	<input type='submit' value='Delete User' name='delete_user' class='acc_btn btn btn-secondary'/>
+	<input type='submit' value='Reset password' name='pw_reset' class='acc_btn btn btn-secondary'/>
+</div>
 <table id="user_table" class="table_user col-sm-12 col-md-6 col-lg-6">
     <tr>
         <th id="ok">Status</th>
@@ -84,7 +100,7 @@ if(isset($_POST['user_selected'])){
 				}
 
 				echo '<tr>';
-					echo "<td>".$temp."</td>";
+					echo "<th>".$temp."</th>";
 					echo "<td class='inactiveUser'>".$row['pk_username']." </td>";
 					echo '<td>'.$row['vorname'].'</td>';
 					echo '<td>'.$row['nachname'].'</td>';
@@ -97,6 +113,7 @@ if(isset($_POST['user_selected'])){
 		}?>
 	</table>
 	</form>
+	</div>
 	</div>
 	</div>
     <?php } ?>

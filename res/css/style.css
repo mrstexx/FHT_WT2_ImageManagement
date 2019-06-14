@@ -24,6 +24,10 @@ footer {
     line-height: 30px;
 }
 
+#logged_div{
+    margin-right: 10px;
+}
+
 /* HOME PAGE DESIGN */
 .home-background-image {
     width: 100%;
@@ -198,6 +202,14 @@ footer {
  .table_user{
 font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
+  margin: auto;
+}
+#heading_table{
+    text-align: center !important;
+}
+#table_div{
+    width: 100%;
+    height: 100%;
 }
 .table_user th{
     padding-top: 12px;
@@ -209,4 +221,8 @@ font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border: 0.1em solid #ddd;
   padding: 1em;
   background-color: white;
+}
+.acc_btn{
+    padding: 1px!important;
+    margin: 5px!important;
 }

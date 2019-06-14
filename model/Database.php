@@ -407,4 +407,17 @@ class Database {
         $select->close();
         return $user_mail;
     }
+
+    public function delete_user($user_name){
+        $sql = "DELETE FROM t_logindaten WHERE pk_username = ?";
+        $delete = $this->con->prepare($sql);
+        $delete->bind_param("s", $user_name);
+        $delete->execute();
+        if ($delete->errno == 0) {
+            $delete->close();
+            return true;
+        }
+        $delete->close();
+        return false;
+    }
 }
