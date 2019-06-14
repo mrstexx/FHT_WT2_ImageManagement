@@ -64,15 +64,15 @@
             <h3>About Us</h3>
             <div class="row">
                 <div class="col-md-4">
-                    <img src="https://www.politieonderzoeken.nl/wp-content/themes/flymag/images/placeholder.png" alt="">
+                    <img src="res/img/leo.png" class="rounded float-right" alt="">
                     <h4 class="text-center">Leo Gruber</h4>
                 </div>
                 <div class="col-md-4">
-                    <img src="https://www.politieonderzoeken.nl/wp-content/themes/flymag/images/placeholder.png" alt="">
+                    <img src="res/img/marius.png" class="rounded float-right" alt="">
                     <h4 class="text-center">Marius Hochwald</h4>
                 </div>
                 <div class="col-md-4">
-                    <img src="https://www.politieonderzoeken.nl/wp-content/themes/flymag/images/placeholder.png" alt="">
+                    <img src="res/img/stefan.png" class="rounded" alt="">
                     <h4 class="text-center">Stefan Miljevic</h4>
                 </div>
             </div>
