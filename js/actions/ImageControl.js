@@ -25,3 +25,24 @@ function sendRequest(imgID, action) {
         success: onSuccessRenderImages
     });
 }
+
+$("#cropImageSelect").on("change", function () {
+    var selectedImage = this.value;
+    var selectArea = $(".selected-crop-image");
+    selectArea.empty();
+    $(".selected-image").attr("src", "pictures/full/" + selectedImage);
+    $(".selected-crop-image").load(" .selected-crop-image > *");
+});
+
+var size = {};
+$("#cropbox").Jcrop({
+    onSelect: function (c) {
+        size = {
+            x: c.x,
+            y: c.y,
+            w: c.w,
+            h: c.h
+        };
+        // $("#crop").css("visibility", "visible");
+    }
+});

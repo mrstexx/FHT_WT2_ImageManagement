@@ -30,9 +30,9 @@ function setSubpageLink($pageName)
                class="list-group-item list-group-item-action bg-light <?php echo isset($_GET["manager"]) ? setActiveSubPage("addNewImage") : "subpage-active"; ?>"><i
                         class="fas fa-plus-circle"></i> Add
                 new image</a>
-            <a href="<?php echo setSubpageLink("editImage"); ?>"
-               class="list-group-item list-group-item-action bg-light <?php echo setActiveSubPage("editImage") ?>"><i
-                        class="fas fa-edit"></i> Edit images</a>
+            <a href="<?php echo setSubpageLink("cropImage"); ?>"
+               class="list-group-item list-group-item-action bg-light <?php echo setActiveSubPage("cropImage") ?>"><i
+                        class="fas fa-crop"></i> Crop images</a>
             <a href="<?php echo setSubpageLink("geoPosition"); ?>"
                class="list-group-item list-group-item-action bg-light <?php echo setActiveSubPage("geoPosition") ?>"><i
                         class="fas fa-map-marked-alt"></i>

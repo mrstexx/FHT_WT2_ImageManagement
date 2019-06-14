@@ -169,7 +169,17 @@ footer {
     margin-left: 5px;
 }
 
-/* EDIT IMAGE DESIGN */
+/* CROP IMAGE DESIGN */
+
+.selected-crop-image {
+    padding: 20px;
+    text-align: center;
+}
+
+.selected-image {
+    width: 500px;
+    height: auto;
+}
 
 /* GEO POSITION DESIGN */
 
