@@ -60,6 +60,24 @@
                 </div>
             </div>
         </div>
+		<div>
+			<div class="row">
+				<div class="col-md-8">
+					<img src="res/img/test2.png" class="rounded float-right" alt="">
+				</div>
+				<div class="col-md-4 p-5">
+					<h3>Piece of cake</h3>
+					<h4>Best Edit</h4>
+					<p class="registration-area">
+					There are many ways to customize pictures, but with this awesome site, you are able to do magnificant edits on your favourite pictures.
+					</p>
+					<h4>Let everyone know</h4>
+					<p class="registration-area">
+					With just one click, you can upload picture and let everyone know where you have been with our awesome map tools.
+					</P>
+				</div>
+			</div>
+		</div>
         <div class="about-us">
             <h3>About Us</h3>
             <div class="row">
