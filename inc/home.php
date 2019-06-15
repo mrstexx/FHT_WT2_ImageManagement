@@ -64,7 +64,7 @@
 		<div>
 			<div class="row">
 				<div class="col-md-8">
-					<img src="res/img/test2.png" class="rounded float-right" alt="">
+					<img src="res/img/test2.png" class="rounded float-right img-fluid" alt="">
 				</div>
 				<div class="col-md-4 p-5">
 					<div class="text-center">
