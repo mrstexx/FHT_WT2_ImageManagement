@@ -93,7 +93,7 @@
                     <img src="res/img/leo.png" class="rounded float-right" alt="">
                     <h4 class="text-center">Leo Gruber</h4>
 					<p>
-					Nothing stops him from gaining as much knowledge as possible from every source.
+					Nothing stops him from gaining as much knowledge as possible from every source. Undefeated in Halo Reach. Founder of MilHochGrub GmbH.
 					</p>
                 </div>
                 <div class="col-md-4">
