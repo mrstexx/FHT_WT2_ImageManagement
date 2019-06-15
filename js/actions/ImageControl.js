@@ -26,23 +26,48 @@ function sendRequest(imgID, action) {
     });
 }
 
+var size = {};
+var selectedImage = "";
+var selectedImageID = "";
+
 $("#cropImageSelect").on("change", function () {
-    var selectedImage = this.value;
+    selectedImage = this.value;
+    selectedImageID = $(this).children(":selected").attr("id");
     var selectArea = $(".selected-crop-image");
     selectArea.empty();
-    $(".selected-image").attr("src", "pictures/full/" + selectedImage);
-    $(".selected-crop-image").load(" .selected-crop-image > *");
+    if (selectedImage !== "Not selected") {
+        selectArea.prepend("<img id='cropbox' class='img-fluid selected-image'\n" +
+            "             src=''/>");
+        $("#cropbox").attr("src", "pictures/full/" + selectedImage);
+        $("#cropbox").Jcrop({
+            boxWidth: 500,
+            onSelect: function (c) {
+                size = {
+                    x: c.x,
+                    y: c.y,
+                    w: c.w,
+                    h: c.h
+                };
+            }
+        });
+    }
 });
 
-var size = {};
-$("#cropbox").Jcrop({
-    onSelect: function (c) {
-        size = {
-            x: c.x,
-            y: c.y,
-            w: c.w,
-            h: c.h
-        };
-        // $("#crop").css("visibility", "visible");
-    }
+$(".crop-btn").click(function () {
+    $.ajax({
+        type: "POST",
+        url: "./actions/ImageControl.php",
+        data: {
+            action: "crop_image",
+            id: selectedImageID,
+            imageName: selectedImage,
+            x: size.x,
+            y: size.y,
+            w: size.w,
+            h: size.h
+        },
+        success: function (response) {
+            location.reload();
+        }
+    });
 });

@@ -254,4 +254,18 @@ class Image
         return Image::getUsersSelection($imageID, $loggedUser);
     }
 
+    public static function cropImage($imageName, $x, $y, $w, $h)
+    {
+        $dir = "../pictures/full/" . $imageName;
+        $thumbDir = "../pictures/thumbnail/" . $imageName;
+        $dirPathInfo = pathinfo($dir);
+        Image::saveThumbImage($dir, 400, 350);
+
+        $imgDirSource = Image::getSourceFromImageExtension($dirPathInfo['extension'], $dir);
+        $dst = ImageCreateTrueColor($w, $h);
+        imagecopyresampled($dst, $imgDirSource, 0, 0, $x, $y, $w, $h, $w, $h);
+        // header('Content-type: image/jpeg');
+        imagejpeg($dst, $dir);
+        imagedestroy($dst);
+    }
 }

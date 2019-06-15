@@ -18,6 +18,9 @@ if (isset($_POST["id"]) && isset($_POST["action"])) {
             Image::deleteImage($imageID, $userName);
             $retObj->success = Image::getAllUserImages($userName);
             break;
+        case "crop_image":
+            Image::cropImage($_POST["imageName"], $_POST["x"], $_POST["y"], $_POST["w"], $_POST["h"]);
+            break;
     }
 
     echo json_encode($retObj);
