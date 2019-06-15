@@ -66,15 +66,23 @@
 					<img src="res/img/test2.png" class="rounded float-right" alt="">
 				</div>
 				<div class="col-md-4 p-5">
+					<div class="text-center">
 					<h3>Piece of cake</h3>
+					</div>
+					<div class="registration-area">
 					<h4>Best Edit</h4>
+					<hr>
 					<p class="registration-area">
-					There are many ways to customize pictures, but with this awesome site, you are able to do magnificant edits on your favourite pictures.
+					There are many ways to customize pictures, but with this awesome site, you are able to do magnificant edits on your most favourite pictures.
 					</p>
+					</div>
+					<div class="registration-area mt-5">
 					<h4>Let everyone know</h4>
+					<hr>
 					<p class="registration-area">
-					With just one click, you can upload picture and let everyone know where you have been with our awesome map tools.
-					</P>
+					With just one click, you can upload your most favourite pictures and let everyone know where you have been with our awesome map tools.
+					</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -84,14 +92,23 @@
                 <div class="col-md-4">
                     <img src="res/img/leo.png" class="rounded float-right" alt="">
                     <h4 class="text-center">Leo Gruber</h4>
+					<p>
+					Nothing stops him from gaining as much knowledge as possible from every source.
+					</p>
                 </div>
                 <div class="col-md-4">
                     <img src="res/img/marius.png" class="rounded float-right" alt="">
                     <h4 class="text-center">Marius Hochwald</h4>
+					<p>
+					Even in his love/hate relationship with javascript and php, he is still eager enough to achieve everything.
+					</p>
                 </div>
                 <div class="col-md-4">
                     <img src="res/img/stefan.png" class="rounded" alt="">
                     <h4 class="text-center">Stefan Miljevic</h4>
+					<p>
+					Stefan is a specialist regarding Javascript/HTML/Bootstrap/JQuery/php. He works parttime for a company and lives in vienna since one and a half year.
+					</p>
                 </div>
             </div>
         </div>
