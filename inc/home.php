@@ -12,11 +12,12 @@
                         if (isset($isAdmin)) {
                             $firstName = User::getFirstName($_SESSION["user"]);
                             $lastName = User::getLastName($_SESSION["user"]);
-                            echo "<h4>Welcome back " . $firstName . " " . $lastName . "</h4>
-                                  <br>
+                            echo "<h4>Welcome back " . $firstName . " " . $lastName . "</h4>";
+                            if($isAdmin ==false){
+                                  echo "<br>
                                   <a href='?page=feed' class=\"btn btn-secondary btn-block\">Check new posts</a>
                                   <a href='?page=manager' class=\"btn btn-secondary btn-block\">Manage your images</a>
-                                  <a href='?page=userdata' class=\"btn btn-secondary btn-block\">Change your personal information</a>";
+                                  <a href='?page=userdata' class=\"btn btn-secondary btn-block\">Change your personal information</a>";}           
                         } else {
                             echo "<h4>Create new account</h4>
                                 <form id=\"reg_form\" class=\"form\" role=\"form\" action=\"\" method=\"POST\">
