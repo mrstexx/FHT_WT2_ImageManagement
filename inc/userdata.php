@@ -98,7 +98,7 @@ $ret_obj = new stdClass();
 <div class="user_data_banner">
 <div class="user_data">
 <div id="alert_update"></div>
-<div><h3>Change your data here</h3></div>
+<div class="h3_user_data"><h3>Change your data here</h3></div>
 <form id="update_data" method="POST" action="">
   <div class="form-group">
     <label for="in_vorname">Vorname</label>
@@ -123,7 +123,7 @@ echo "value='$mail'";
 
 
 
-<div><h3>Change your password here</h3></div>
+<div class="h3_user_data"><h3>Change your password here</h3></div>
 <form id="update_password" method="POST" action="">
   <div class="form-group">
     <label for="in_old_pw">Current password</label>

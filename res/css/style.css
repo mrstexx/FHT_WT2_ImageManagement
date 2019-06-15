@@ -188,16 +188,24 @@ footer {
 /* GEO POSITION DESIGN */
 
 /* USER DATA DESIGN */
+.user_data_con{
+    margin-bottom: 20px;
+}
 .user_data {
     border-radius: 15px;
     padding: 30px;
     background-color: #f8f9fa;
 }
-
+.h3_user_data{
+    margin: 5px;
+    padding: 5px;
+}
 .user_data h3 {
     margin-bottom: 20px;
     margin-top: 5px;
     text-align: center;
+    border-bottom: 1px solid lightslategray;
+    padding: 10px;
 }
 
 .user_data_banner {
@@ -213,6 +221,7 @@ footer {
     border-radius: 15px;
     padding: 30px;
     background-color: #f8f9fa;
+    margin-bottom: 20px;
 }
 
 .table_user {
@@ -244,6 +253,5 @@ footer {
 }
 
 .acc_btn {
-    padding: 1px !important;
-    margin: 5px !important;
+    margin: 10px;
 }

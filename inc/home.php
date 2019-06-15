@@ -36,7 +36,7 @@
                                     </div>
                                     <div class=\"form-group item\">
                                         <input id=\"registrate_mail\" placeholder=\"name@example.com\"
-                                               class=\"form-control form-control-sm\" type=\"text\" name=\"register_mail\">
+                                               class=\"form-control form-control-sm\" type=\"email\" name=\"register_mail\">
                                     </div>
                                     <div class=\"form-group item\">
                                         <input id=\"registrate_password1\" placeholder=\"Password\"
