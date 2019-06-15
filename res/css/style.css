@@ -24,7 +24,7 @@ footer {
     line-height: 30px;
 }
 
-#logged_div{
+#logged_div {
     margin-right: 10px;
 }
 
@@ -169,21 +169,43 @@ footer {
     margin-left: 5px;
 }
 
-/* EDIT IMAGE DESIGN */
+/* CROP IMAGE DESIGN */
+
+.selected-crop-image {
+    padding: 20px;
+    text-align: center;
+}
+
+.selected-image {
+    max-width: 400px;
+    height: auto;
+}
+
+.jcrop-active {
+    margin: auto!important;
+}
 
 /* GEO POSITION DESIGN */
 
 /* USER DATA DESIGN */
+.user_data_con{
+    margin-bottom: 20px;
+}
 .user_data {
     border-radius: 15px;
     padding: 30px;
     background-color: #f8f9fa;
 }
-
+.h3_user_data{
+    margin: 5px;
+    padding: 5px;
+}
 .user_data h3 {
     margin-bottom: 20px;
     margin-top: 5px;
     text-align: center;
+    border-bottom: 1px solid lightslategray;
+    padding: 10px;
 }
 
 .user_data_banner {
@@ -194,35 +216,42 @@ footer {
 .user_account_banner {
     margin-top: 80px;
 }
-.useraccount_cont{
+
+.useraccount_cont {
     border-radius: 15px;
     padding: 30px;
     background-color: #f8f9fa;
+    margin-bottom: 20px;
 }
- .table_user{
-font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  margin: auto;
+
+.table_user {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    margin: auto;
 }
-#heading_table{
+
+#heading_table {
     text-align: center !important;
 }
-#table_div{
+
+#table_div {
     width: 100%;
     height: 100%;
 }
-.table_user th{
+
+.table_user th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
     background-color: white;
 }
-.table_user tr,th,td{
-  border: 0.1em solid #ddd;
-  padding: 1em;
-  background-color: white;
+
+.table_user tr, th, td {
+    border: 0.1em solid #ddd;
+    padding: 1em;
+    background-color: white;
 }
-.acc_btn{
-    padding: 1px!important;
-    margin: 5px!important;
+
+.acc_btn {
+    margin: 10px;
 }

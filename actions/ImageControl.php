@@ -15,7 +15,11 @@ if (isset($_POST["id"]) && isset($_POST["action"])) {
             $retObj->success = Image::copyImage($imageID, $userName);
             break;
         case "delete_image":
-            $retObj->success = Image::deleteImage($imageID, $userName);
+            Image::deleteImage($imageID, $userName);
+            $retObj->success = Image::getAllUserImages($userName);
+            break;
+        case "crop_image":
+            Image::cropImage($_POST["imageName"], $_POST["x"], $_POST["y"], $_POST["w"], $_POST["h"]);
             break;
     }
 

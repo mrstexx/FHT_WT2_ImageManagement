@@ -43,6 +43,7 @@ function onSuccessRenderImages(response) {
                 '                     class="img-fluid"\n' +
                 '                     id="' + allImages[i].pk_bild_id + '"\n' +
                 '                     alt="' + allImages[i].name + '">\n' +
+                '                 <h6 class="text-center">' + allImages[i].name + '</h6>' +
                 '                <div class="img-options">\n' +
                 '                   <i class="fas fa-share-square mng-share"></i>\n' +
                 '                   <i class="fas fa-hashtag mng-tag"></i>\n' +

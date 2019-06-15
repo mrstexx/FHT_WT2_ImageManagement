@@ -25,6 +25,7 @@ include "model/Image.php";
     for ($i = 0; $i < sizeof($images); $i++) {
         echo "<div class=\"col-md-6 col-lg-3 my-image\">";
         echo "<img id=\"" . $images[$i]["pk_bild_id"] . "\" src=\"" . $images[$i]["thumbnail_directory"] . "\" class=\"img-fluid\" alt=\"" . $images[$i]["name"] . "\">";
+        echo "<h6 class='text-center'>" . $images[$i]["name"] . "</h6>";
         echo "<div class=\"img-options\">";
         echo "<i class=\"fas fa-share-square mng-share\"></i>
             <i class=\"fas fa-hashtag mng-tag\"></i>

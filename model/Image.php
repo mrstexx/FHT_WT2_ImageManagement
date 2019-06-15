@@ -105,6 +105,7 @@ class Image
     {
         $dir = "";
         $thumbDir = "";
+        $finalImageName = "";
         $db = new Database();
         if ($db->connect()) {
             $result = $db->getImageData($imageID);
@@ -112,10 +113,15 @@ class Image
                 $imageName = $result["name"];
                 $dir = $result["directory"];
                 $pathInfo = pathInfo($dir);
+                if (Image::isImageExisting($imageName)) {
+                    $finalImageName = $pathInfo["filename"] . "-dupl." . $pathInfo["extension"];
+                } else {
+                    $finalImageName = $imageName;
+                }
                 $newDir = "../pictures/full/" . $pathInfo['filename'] . "-dupl." . $pathInfo['extension'];
                 copy($dir, $newDir);
                 $thumbDir = Image::saveThumbImage($newDir, 400, 350);
-                $image = new Image($userName, $imageName, $newDir, $thumbDir, $result["geoinfo"]);
+                $image = new Image($userName, $finalImageName, $newDir, $thumbDir, $result["geoinfo"]);
                 if ($image->addNewImage()) {
                     $db->close_con();
                     return Image::getAllUserImages($userName);
@@ -247,5 +253,19 @@ class Image
         $db->close_con();
         return Image::getUsersSelection($imageID, $loggedUser);
     }
-    
+
+    public static function cropImage($imageName, $x, $y, $w, $h)
+    {
+        $dir = "../pictures/full/" . $imageName;
+        $thumbDir = "../pictures/thumbnail/" . $imageName;
+        $dirPathInfo = pathinfo($dir);
+        Image::saveThumbImage($dir, 400, 350);
+
+        $imgDirSource = Image::getSourceFromImageExtension($dirPathInfo['extension'], $dir);
+        $dst = ImageCreateTrueColor($w, $h);
+        imagecopyresampled($dst, $imgDirSource, 0, 0, $x, $y, $w, $h, $w, $h);
+        // header('Content-type: image/jpeg');
+        imagejpeg($dst, $dir);
+        imagedestroy($dst);
+    }
 }
