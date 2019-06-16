@@ -20,26 +20,18 @@ CREATE TABLE IF NOT EXISTS `t_logindaten` (
   PRIMARY KEY (`pk_username`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
-CREATE TABLE IF NOT EXISTS `t_geoinfo` (
-  `pk_geoinfo_id` int(11) NOT NULL AUTO_INCREMENT,
-  `breitengrad` float(10) NOT NULL,
-  `längengrad` float(10) NOT NULL,
-  `geoinfo` varchar(3000) NOT NULL,
-  PRIMARY KEY (`pk_geoinfo_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
-
 CREATE TABLE IF NOT EXISTS `t_bilder` (
   `pk_bild_id` int(11) NOT NULL AUTO_INCREMENT,
   `fk_pk_username` varchar(64) NOT NULL,
-  `fk_pk_geoinfo_id` int(11),
   `name` varchar(50) NOT NULL,
-  `geoinfo` varchar(50),
+  `geoinfo` varchar(3000) NOT NULL,
   `aufnahmedatum` DATETIME NOT NULL,
   `directory` TEXT NOT NULL,
   `thumbnail_directory` TEXT NOT NULL,
+  `breitengrad` float(10) NOT NULL,
+  `längengrad` float(10) NOT NULL,
   PRIMARY KEY (`pk_bild_id`),
   FOREIGN KEY (`fk_pk_username`) REFERENCES `t_logindaten` (`pk_username`),
-  FOREIGN KEY (`fk_pk_geoinfo_id`) REFERENCES `t_geoinfo` (`pk_geoinfo_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 CREATE TABLE IF NOT EXISTS `t_user_access` (
