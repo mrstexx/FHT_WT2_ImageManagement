@@ -209,6 +209,21 @@ class Database {
         $select->close();
         return $images;
     }
+	
+	public function fetchAllImages($userName)
+    {
+        $images = array();
+        $sql = "SELECT fk_pk_bild_id, t_bilder.fk_pk_username, t_bilder.pk_bild_id, t_bilder.name, t_bilder.geoinfo, t_bilder.aufnahmedatum, t_bilder.directory, t_bilder.thumbnail_directory FROM t_user_access INNER JOIN t_bilder ON t_user_access.fk_pk_bild_id = t_bilder.pk_bild_id WHERE t_bilder.fk_pk_username = ?";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("s", $userName);
+        $select->execute();
+        $result = $select->get_result();
+        while ($row = $result->fetch_assoc()) {
+            array_push($images, $row);
+        }
+        $select->close();
+        return $images;
+    }
 
     public function checkImageName($imageName) {
         $sql = "SELECT name FROM t_bilder WHERE name=?";

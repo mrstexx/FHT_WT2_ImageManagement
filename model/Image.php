@@ -86,6 +86,18 @@ class Image
         $db->close_con();
         return null;
     }
+	
+	public static function getAllImages($userName)
+    {
+        $db = new Database();
+        if ($db->connect()) {
+            $result = $db->fetchAllImages($userName);
+            $db->close_con();
+            return $result;
+        }
+        $db->close_con();
+        return null;
+    }
 
     public static function isImageExisting($imageName)
     {

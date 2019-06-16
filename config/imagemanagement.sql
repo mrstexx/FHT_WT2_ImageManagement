@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS `t_geoinfo` (
   `pk_geoinfo_id` int(11) NOT NULL AUTO_INCREMENT,
   `breitengrad` float(10) NOT NULL,
   `längengrad` float(10) NOT NULL,
+  `geoinfo` varchar(3000) NOT NULL,
   PRIMARY KEY (`pk_geoinfo_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
