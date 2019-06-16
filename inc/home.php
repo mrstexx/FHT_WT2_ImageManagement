@@ -22,12 +22,12 @@
                             echo "<h4>Create new account</h4>
                                 <form id=\"reg_form\" class=\"form\" role=\"form\" action=\"\" method=\"POST\">
                                     <div class=\"form-group item\">
-                                        <input id=\"registrate_vorname\" placeholder=\"Vorname\"
+                                        <input id=\"registrate_vorname\" placeholder=\"First Name\"
                                                class=\"form-control form-control-sm\"
                                                type=\"text\" name=\"register_vorname\">
                                     </div>
                                     <div class=\"form-group item\">
-                                        <input id=\"registrate_nachname\" placeholder=\"Nachname\"
+                                        <input id=\"registrate_nachname\" placeholder=\"Surname\"
                                                class=\"form-control form-control-sm\" type=\"text\" name=\"register_nachname\">
                                     </div>
                                     <div class=\"form-group item\">
@@ -44,7 +44,7 @@
                                                class=\"form-control form-control-sm\" type=\"password\" name=\"register_password1\">
                                     </div>
                                     <div class=\"form-group item\">
-                                        <input id=\"registrate_password2\" placeholder=\"Password\"
+                                        <input id=\"registrate_password2\" placeholder=\"Password nochmal eingeben\"
                                                class=\"form-control form-control-sm\" type=\"password\" name=\"register_password2\">
                                     </div>
         
