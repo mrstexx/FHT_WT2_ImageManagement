@@ -1,10 +1,5 @@
 <?php
 
-/**
- * Description of user
- *
- * @author Leo
- */
 class User
 {
 

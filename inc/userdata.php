@@ -37,7 +37,7 @@ $ret_obj = new stdClass();
         //$ret_obj->error = false;
         //$ret_obj->success_message = 'Your user information has been updated';
        // echo json_encode($ret_obj);
-       echo 'Your user information has been updated';
+       //echo 'Your user information has been updated';
     } else {
        // $ret_obj->error = true;
         //$ret_obj->error_message = 'Something went wrong';

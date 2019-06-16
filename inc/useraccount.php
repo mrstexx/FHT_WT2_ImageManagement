@@ -12,7 +12,7 @@ if(isset($_POST['user_selected'])){
 		if(isset($_POST['status_update'])){
 			$status = $db->get_userstatus($user); // fetch status 
 			if($db->update_userstatus($user, $status)){ //update status
-				echo 'Status of user '.$user.' successfully updated';
+				//echo 'Status of user '.$user.' successfully updated';
 			}
 			else{
 				echo 'Error while updating user status';
@@ -49,7 +49,7 @@ if(isset($_POST['user_selected'])){
 				$mail = $res['email'];
 				$user_obj = new User($user, '', '', $mail, $pwhash);
 				$user_obj->send_mail();
-				echo 'Password reset and email sent';
+				//echo 'Password reset and email sent';
 			}
 			else{
 				echo 'Error at passwort reset';

@@ -2,10 +2,22 @@
     <div class="container">
         <div class="registration-banner">
             <div class="row">
-                <div class="col-md-7">
-                    <h2 class="text-center">Welcome to our application</h2>
-                    <img class="home-background-image" src="res/img/background.png" alt="Background image">
+                <?php if(isset($isAdmin)){
+                    if($isAdmin==false){ echo '<div class="col-md-7">';
+                        echo '<h2 class="text-center">Welcome to our application</h2>';}
+                    else{
+                        $firstName = User::getFirstName($_SESSION["user"]);
+                        echo '<div class="col-md-12">';
+                        echo '<h2 class="text-center">Welcome back to our application '.$firstName.'!</h2>';}
+                    }
+                    else{ echo '<div class="col-md-7">'; 
+                   echo '<h2 class="text-center">Welcome to our application</h2>';}?>
+                   <img class="home-background-image" src="res/img/background.png" alt="Background image">
                 </div>
+                
+                <?php //if user or non-user show reg-area
+                if(!isset($isAdmin) || (isset($isAdmin) && $isAdmin==false)){?>
+                
                 <div class="col-md-5">
                     <div class="registration-area">
                         <?php
@@ -55,7 +67,7 @@
                                     </div>
                                 </form>
                                 <div id=\"alertRegistration\"></div>";
-                        }
+                        }}
                         ?>
                     </div>
                 </div>
