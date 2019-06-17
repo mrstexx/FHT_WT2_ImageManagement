@@ -21,8 +21,8 @@ $sort_type;
 <div class="form-group">
     <label for="exampleFormControlSelect1">Sort images by..</label>
     <select name="sort_value" class="form-control" id="exampleFormControlSelect1">
+    <option value="img_date">Date (default)</option>
       <option value="img_name">Name</option>
-      <option value="img_date">Date (default)</option>
       <option value="geo_pos">Geo postition</option>
     </select>
 </div>
@@ -39,10 +39,12 @@ $sort_type;
     $images = Image::getAllUserImages($_SESSION["user"]);
     for ($i = 0; $i < sizeof($images); $i++) {
         $imageplace = $images[$i]["name"];
-		$newimage = explode('.', $imageplace, -1);
+        $newimage = explode('.', $imageplace, -1);
+        $dirpath = substr($images[$i]["directory"], 3, strlen($images[$i]["directory"]));
 		echo "<div class=\"col-md-6 col-lg-3 my-image ml-5 mr-5 mt-2 registration-area\">";
-		echo "<h6 class='text-center'> Name: " . $newimage[0] . "</h6><a href=\"#\" class=\"btn btn-primary mb-3\">Show on Map</a>";
-        echo "<img id=\"" . $images[$i]["pk_bild_id"] . "\" src=\"" . $images[$i]["thumbnail_directory"] . "\" class=\"img-fluid\" alt=\"" . $images[$i]["name"] . "\">";
+        echo "<h6 class='text-center'> Name: " . $newimage[0] . "</h6><a href=\"#\" class=\"btn btn-primary mb-3\">Show on Map</a>";
+        echo "<a href=\"" . $dirpath . "\" data-lightbox=\"bild-1\" data-title=\"".$newimage[0]."\">";
+        echo "<img id=\"" . $images[$i]["pk_bild_id"] . "\" src=\"" . $images[$i]["thumbnail_directory"] . "\" class=\"img-fluid\" alt=\"" . $images[$i]["name"] . "\"></a>";
 		echo "<p class='text-center'> Das Bild wurde geschossen am " . $images[$i]["aufnahmedatum"] . "</p>";
 		echo "</div>";
     }
@@ -55,12 +57,13 @@ $sort_type;
     for ($i = 0; $i < sizeof($images); $i++) {
         $imageplace = $images[$i]["name"];
 		$newimage = explode('.', $imageplace, -1);
-		echo "<div class=\"col-md-6 col-lg-3 my-image ml-4 mr-4 mt-2 mb-3 registration-area\">";
+		$dirpath = substr($images[$i]["directory"], 3, strlen($images[$i]["directory"]));
+		echo "<div class=\"col-md-6 col-lg-3 my-image ml-5 mr-5 mt-2 registration-area\">";
         echo "<h6 class='text-center'> Name: " . $newimage[0] . "</h6><a href=\"#\" class=\"btn btn-primary mb-3\">Show on Map</a>";
-		echo "<img id=\"" . $images[$i]["pk_bild_id"] . "\" src=\"" . $images[$i]["thumbnail_directory"] . "\" class=\"img-fluid\" alt=\"" . $images[$i]["name"] . "\">";
+        echo "<a href=\"" . $dirpath . "\" data-lightbox=\"bild-1\" data-title=\"".$newimage[0]."\">";
+        echo "<img id=\"" . $images[$i]["pk_bild_id"] . "\" src=\"" . $images[$i]["thumbnail_directory"] . "\" class=\"img-fluid\" alt=\"" . $images[$i]["name"] . "\"></a>";
 		echo "<p class='text-center'> Das Bild wurde geschossen am " . $images[$i]["aufnahmedatum"] . "</p>";
-        //echo "<div class=\"img-options\">";
-        echo "</div>";
+		echo "</div>";
 
     }
 	echo "</div>";
@@ -82,11 +85,13 @@ else if($sort_type == 'img_name'){
         $imageplace = $images[$i]["name"];
         $newimage = explode('.', $imageplace, -1);
         if($img_names[$j] == $newimage[0]){
-		echo "<div class=\"col-md-6 col-lg-3 my-image ml-5 mr-5 mt-2 registration-area\">";
-		echo "<h6 class='text-center'> Name: " . $newimage[0] . "</h6><a href=\"#\" class=\"btn btn-primary mb-3\">Show on Map</a>";
-        echo "<img id=\"" . $images[$i]["pk_bild_id"] . "\" src=\"" . $images[$i]["thumbnail_directory"] . "\" class=\"img-fluid\" alt=\"" . $images[$i]["name"] . "\">";
-		echo "<p class='text-center'> Das Bild wurde geschossen am " . $images[$i]["aufnahmedatum"] . "</p>";
-		echo "</div>";
+            $dirpath = substr($images[$i]["directory"], 3, strlen($images[$i]["directory"]));
+            echo "<div class=\"col-md-6 col-lg-3 my-image ml-5 mr-5 mt-2 registration-area\">";
+            echo "<h6 class='text-center'> Name: " . $newimage[0] . "</h6><a href=\"#\" class=\"btn btn-primary mb-3\">Show on Map</a>";
+            echo "<a href=\"" . $dirpath . "\" data-lightbox=\"bild-1\" data-title=\"".$newimage[0]."\">";
+            echo "<img id=\"" . $images[$i]["pk_bild_id"] . "\" src=\"" . $images[$i]["thumbnail_directory"] . "\" class=\"img-fluid\" alt=\"" . $images[$i]["name"] . "\"></a>";
+            echo "<p class='text-center'> Das Bild wurde geschossen am " . $images[$i]["aufnahmedatum"] . "</p>";
+            echo "</div>";
         }
     }
 }
@@ -108,11 +113,13 @@ echo "</div>";?>
        $imageplace = $images[$i]["name"];
        $newimage = explode('.', $imageplace, -1);
        if($img_names[$j] == $newimage[0]){
-       echo "<div class=\"col-md-6 col-lg-3 my-image ml-5 mr-5 mt-2 registration-area\">";
-       echo "<h6 class='text-center'> Name: " . $newimage[0] . "</h6><a href=\"#\" class=\"btn btn-primary mb-3\">Show on Map</a>";
-       echo "<img id=\"" . $images[$i]["pk_bild_id"] . "\" src=\"" . $images[$i]["thumbnail_directory"] . "\" class=\"img-fluid\" alt=\"" . $images[$i]["name"] . "\">";
-       echo "<p class='text-center'> Das Bild wurde geschossen am " . $images[$i]["aufnahmedatum"] . "</p>";
-       echo "</div>";
+        $dirpath = substr($images[$i]["directory"], 3, strlen($images[$i]["directory"]));
+        echo "<div class=\"col-md-6 col-lg-3 my-image ml-5 mr-5 mt-2 registration-area\">";
+        echo "<h6 class='text-center'> Name: " . $newimage[0] . "</h6><a href=\"#\" class=\"btn btn-primary mb-3\">Show on Map</a>";
+        echo "<a href=\"" . $dirpath . "\" data-lightbox=\"bild-1\" data-title=\"".$newimage[0]."\">";
+        echo "<img id=\"" . $images[$i]["pk_bild_id"] . "\" src=\"" . $images[$i]["thumbnail_directory"] . "\" class=\"img-fluid\" alt=\"" . $images[$i]["name"] . "\"></a>";
+        echo "<p class='text-center'> Das Bild wurde geschossen am " . $images[$i]["aufnahmedatum"] . "</p>";
+        echo "</div>";
        }
    }
 }
@@ -171,3 +178,5 @@ else if($sort_type == "geo_pos"){
 }
     ?>
 </div>
+<script src="js/lightbox.js"></script>
+<script src="js/lightbox_option.js"></script>

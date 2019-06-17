@@ -13,6 +13,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/2.0.4/css/Jcrop.min.css">
     <link rel="stylesheet" href="res/css/style.css">
+    <link href="res/css/lightbox.css" rel="stylesheet">
     <title>Image Manager</title>
     <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"
