@@ -198,7 +198,7 @@ class Database {
     public function fetchAllUserImages($userName)
     {
         $images = array();
-        $sql = "SELECT pk_bild_id, name, geoinfo, aufnahmedatum, directory, thumbnail_directory FROM t_bilder WHERE fk_pk_username = ?";
+        $sql = "SELECT pk_bild_id, name, geoinfo, aufnahmedatum, directory, thumbnail_directory FROM t_bilder  WHERE fk_pk_username = ?";
         $select = $this->con->prepare($sql);
         $select->bind_param("s", $userName);
         $select->execute();
@@ -434,5 +434,54 @@ class Database {
         }
         $delete->close();
         return false;
+    }
+
+    public function all_tags(){
+        $sql = "SELECT pk_tags FROM t_tags";
+        $select = $this->con->prepare($sql);
+        $select->execute();
+        $result = $select->get_result();
+        $tags = array();
+        while ($row = $result->fetch_assoc()) {
+            array_push($tags, $row["pk_tags"]);
+        }
+        $select->close();
+        return $tags;
+    }
+
+    public function fetch_all_images_with_tag($userName){
+        $images = array();
+        $sql = "select bilder.*, tags.fk_pk_tags as tag from
+        (select * FROM t_bilder where fk_pk_username = ?) bilder
+        join
+        (select * from t_tags_included)tags 
+        on bilder.pk_bild_id=tags.fk_pk_bild_id";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("s", $userName);
+        $select->execute();
+        $result = $select->get_result();
+        while ($row = $result->fetch_assoc()) {
+            array_push($images, $row);
+        }
+        $select->close();
+        return $images;
+    }
+
+    public function fetch_all_images_with_tag_shared($userName){
+        $images = array();
+        $sql = "select bilder.*, tags.fk_pk_tags as tag from
+        (select a.fk_pk_username, a.pk_bild_id, a.name, a.geoinfo, a.aufnahmedatum, a.directory, a.thumbnail_directory FROM t_bilder a join t_user_access b on a.pk_bild_id=b.fk_pk_bild_id where b.fk_pk_username = ?) bilder
+        join
+        (select * from t_tags_included)tags 
+        on bilder.pk_bild_id=tags.fk_pk_bild_id";
+        $select = $this->con->prepare($sql);
+        $select->bind_param("s", $userName);
+        $select->execute();
+        $result = $select->get_result();
+        while ($row = $result->fetch_assoc()) {
+            array_push($images, $row);
+        }
+        $select->close();
+        return $images;
     }
 }

@@ -277,3 +277,24 @@ footer {
 .acc_btn {
     margin: 10px;
 }
+
+/* FEED DESIGN */
+
+.table_tags {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    margin: auto;
+}
+
+.table_tags th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: white;
+}
+
+.table_tags tr, th, td {
+    border: 0.1em solid #ddd;
+    padding: 1em;
+    background-color: white;
+}

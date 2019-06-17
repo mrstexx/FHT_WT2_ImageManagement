@@ -289,4 +289,41 @@ class Image
         }
         $db->close_con();
     }
+
+    public static function get_all_tags(){
+        $db = new Database();
+        if ($db->connect()) {
+            $result = $db->all_tags();
+            if ($result) {
+                $db->close_con();
+                return $result;
+            }
+        }
+        $db->close_con();
+    }
+
+    public static function user_images_with_tag($userName)
+    {
+        $db = new Database();
+        if ($db->connect()) {
+            $result = $db->fetch_all_images_with_tag($userName);
+            $db->close_con();
+            return $result;
+        }
+        $db->close_con();
+        return null;
+    }
+
+    public static function user_shared_images_with_tag($userName)
+    {
+        $db = new Database();
+        if ($db->connect()) {
+            $result = $db->fetch_all_images_with_tag_shared($userName);
+            $db->close_con();
+            return $result;
+        }
+        $db->close_con();
+        return null;
+    }
+	
 }
