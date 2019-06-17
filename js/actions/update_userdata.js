@@ -7,7 +7,7 @@ $("#update_data").on("submit", function (e) {
         success: function (response) {
             var payload = JSON.parse(response);
             if (payload.error) {
-              alert(payload.error_message);
+                alert(payload.error_message);
             } else {
                 alert(payload.success_message);
             }

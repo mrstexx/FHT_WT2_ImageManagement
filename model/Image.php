@@ -86,8 +86,8 @@ class Image
         $db->close_con();
         return null;
     }
-	
-	public static function getAllImages($userName)
+
+    public static function getAllImages($userName)
     {
         $db = new Database();
         if ($db->connect()) {
@@ -282,7 +282,8 @@ class Image
         Image::saveThumbImage($dir, 400, 350);
     }
 
-    public static function update_user_access($user_name, $img_id){
+    public static function update_user_access($user_name, $img_id)
+    {
         $db = new Database();
         if ($db->connect()) {
             $db->deleteSelection($user_name, $img_id);
@@ -290,7 +291,8 @@ class Image
         $db->close_con();
     }
 
-    public static function get_all_tags(){
+    public static function get_all_tags()
+    {
         $db = new Database();
         if ($db->connect()) {
             $result = $db->all_tags();
@@ -325,5 +327,5 @@ class Image
         $db->close_con();
         return null;
     }
-	
+
 }

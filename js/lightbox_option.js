@@ -1,4 +1,4 @@
-    lightbox.option({
-      'resizeDuration': 200,
-      'wrapAround': true
-    })
+lightbox.option({
+    'resizeDuration': 200,
+    'wrapAround': true
+})

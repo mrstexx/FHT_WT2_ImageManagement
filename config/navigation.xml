@@ -8,7 +8,7 @@
         <section page="help">Help</section>
         <section page="feed">Feed</section>
         <section page="manager">Manager</section>
-		<section page="userdata">User Data </section>
+        <section page="userdata">User Data</section>
     </user>
     <admin>
         <section page="home">Home</section>
