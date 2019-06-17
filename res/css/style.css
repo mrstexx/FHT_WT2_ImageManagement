@@ -140,6 +140,7 @@ footer {
 .my-image {
     text-align: center;
     padding: 10px;
+    margin-top: 10px;
 }
 
 .img-options {
@@ -281,9 +282,7 @@ footer {
 /* FEED DESIGN */
 
 .table_tags {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    margin: auto;
+    padding: 5px 15px;
 }
 
 .table_tags th {
