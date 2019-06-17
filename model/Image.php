@@ -281,4 +281,12 @@ class Image
 
         Image::saveThumbImage($dir, 400, 350);
     }
+
+    public static function update_user_access($user_name, $img_id){
+        $db = new Database();
+        if ($db->connect()) {
+            $db->deleteSelection($user_name, $img_id);
+        }
+        $db->close_con();
+    }
 }
