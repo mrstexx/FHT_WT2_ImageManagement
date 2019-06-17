@@ -183,8 +183,8 @@ class Database {
     }
 
     public function addNewImage($owner, $imageName, $directory, $thumbDir, $geoInfo) {
-        $sql = "INSERT INTO t_bilder (pk_bild_id, fk_pk_username, fk_pk_geoinfo_id , name, geoinfo, aufnahmedatum, directory, thumbnail_directory) 
-            VALUES (DEFAULT, ?, null, ?, ?, NOW(), ?, ?)";
+        $sql = "INSERT INTO t_bilder (pk_bild_id, fk_pk_username , name, geoinfo, aufnahmedatum, directory, thumbnail_directory) 
+            VALUES (DEFAULT, ?, ?, ?, NOW(), ?, ?)"; // fk_pk_geoinfo gelöscht und null gelöscht
         $insert = $this->con->prepare($sql);
         $insert->bind_param("sssss", $owner, $imageName, $geoInfo, $directory, $thumbDir);
         if($insert->execute()){

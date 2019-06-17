@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `t_bilder` (
   `breitengrad` float(10) NOT NULL,
   `längengrad` float(10) NOT NULL,
   PRIMARY KEY (`pk_bild_id`),
-  FOREIGN KEY (`fk_pk_username`) REFERENCES `t_logindaten` (`pk_username`),
+  FOREIGN KEY (`fk_pk_username`) REFERENCES `t_logindaten` (`pk_username`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 CREATE TABLE IF NOT EXISTS `t_user_access` (
