@@ -280,4 +280,12 @@ class Image
         imagejpeg($dst, $dir);
         imagedestroy($dst);
     }
+
+    public static function update_user_access($user_name, $img_id){
+        $db = new Database();
+        if ($db->connect()) {
+            $db->deleteSelection($user_name, $img_id);
+        }
+        $db->close_con();
+    }
 }
