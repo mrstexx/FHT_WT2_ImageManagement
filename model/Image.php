@@ -271,7 +271,6 @@ class Image
         $dir = "../pictures/full/" . $imageName;
         $thumbDir = "../pictures/thumbnail/" . $imageName;
         $dirPathInfo = pathinfo($dir);
-        Image::saveThumbImage($dir, 400, 350);
 
         $imgDirSource = Image::getSourceFromImageExtension($dirPathInfo['extension'], $dir);
         $dst = ImageCreateTrueColor($w, $h);
@@ -279,5 +278,7 @@ class Image
         // header('Content-type: image/jpeg');
         imagejpeg($dst, $dir);
         imagedestroy($dst);
+
+        Image::saveThumbImage($dir, 400, 350);
     }
 }

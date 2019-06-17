@@ -21,7 +21,7 @@ include "model/Image.php";
             </select>
         </div>
         <div class="col-md-2">
-            <button class="crop-btn btn btn-primary btn-block">Crop</button>
+            <button class="crop-btn btn btn-info btn-block">Crop</button>
         </div>
     </div>
     <div class="selected-crop-image">

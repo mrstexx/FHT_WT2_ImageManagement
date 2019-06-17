@@ -64,3 +64,4 @@ function setSubpageLink($pageName)
 <script src="./js/actions/ImageControl.js"></script>
 <script src="./js/actions/TaggingHandler.js"></script>
 <script src="./js/actions/SharingHandler.js"></script>
+<script src="./js/actions/GeoDropHandler.js"></script>
