@@ -32,12 +32,24 @@
                 <h3>Feeds are awesome!</h3>
                 <hr>
                 <p>
-                    hjadofguhaokiufvghydioufghaeoghae0ogfuhai gzeghoadfhgaidufgh udifahgoiuadhfg uadfhgiuo adhfgoiuah
-                    dfgouihaidu fhg
+                    In the upper left corner, you can set the tags, so you only see those pictures, which have this/these tags.
+					On the right, you can set, by which parameter you want the pictures to sort.
+					Generally, you see all the pictures you have uploaded.
                 </p>
             </div>
             <div class="col-md-6">
-                <img src="res/img/test2.png" class="rounded float-right img-fluid img-thumbnail" alt="">
+                <img src="res/img/bild2.jpg" class="rounded float-right img-fluid img-thumbnail" alt="">
+            </div>
+			<div class="col-md-6">
+                <img src="res/img/bild3.jpg" class="rounded float-right img-fluid img-thumbnail" alt="">
+            </div>
+			<div class="col-md-6 registration-area">
+			<h3>Sharing is caring!</h3>
+                <hr>
+                <p>
+                    In the lower part of the Feed page, you can see all the pictures others have shared with you.
+					In this section, if you aren't happy with some pictures others have shared, you can simply select them and click on Don't wanna see selected images?.
+                </p>
             </div>
         </div>
         <div class="row registration-area mb-3">
@@ -108,22 +120,11 @@
                 <h3>Set geo position</h3>
                 <hr>
                 <p>
-                    In the image manager lies the heart of the site. On the top of the screen you should be able to see
-                    the
-                    <a href="?page=manager">
-                        <i class="fas fa-cogs">
-                        </i> Manager
-                    </a>
-                    button. If clicked, you will be able to do 3 awesome possibilities to witness.
-                <ul>
-                    <li>Add new images</li>
-                    <li>Crop images</li>
-                    <li>Set Geo Position</li>
-                </ul>
+				Setting the geo position of your pictures is an easy task, first just place the desired pictures in the map. Secondly adjust the position of the pictures. Finally, click Save changes and it is done.
                 </p>
             </div>
             <div class="col-md-6">
-                <img src="res/img/test3.png" class="rounded float-right img-fluid img-thumbnail" alt="">
+                <img src="res/img/bild12.jpg" class="rounded float-right img-fluid img-thumbnail" alt="">
             </div>
         </div>
         <div class="row registration-area mb-3">
