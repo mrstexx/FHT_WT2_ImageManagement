@@ -93,7 +93,10 @@ if (isset($_POST['img_sort'])) {
                                 $dirpath = substr($images[$i]["directory"], 3, strlen($images[$i]["directory"]));
                                 echo "<div class=\"col-md-6 col-lg-4 my-image registration-area\">";
                                 echo "<h6 class='text-center'> Name: " . $newimage[0] . "</h6><a href=\"#\" class=\"btn btn-primary mb-3\">Show on Map</a>";
+
+                                echo "<div class='acc_btn'>";
                                 echo "<a href=\"" . $dirpath . "\" data-lightbox=\"bild-1\" data-title=\"" . $newimage[0] . "\">";
+                                echo "</div>";
                                 echo "<img id=\"" . $images[$i]["pk_bild_id"] . "\" src=\"" . $images[$i]["thumbnail_directory"] . "\" class=\"img-fluid\" alt=\"" . $images[$i]["name"] . "\"></a>";
                                 echo "<p class='text-center'> Das Bild wurde geschossen am " . $images[$i]["aufnahmedatum"] . "</p>";
                                 echo "</div>";
@@ -118,7 +121,9 @@ if (isset($_POST['img_sort'])) {
                                 echo "<div class=\"col-md-6 col-lg-4 my-image registration-area\">";
                                 echo '<form class="form" role="" action="" method="POST">';
                                 echo "<h6 class='text-center'> Name: " . $newimage[0] . "</h6><a href=\"#\" class=\"btn btn-primary mb-3\">Show on Map</a>";
+                                echo "<div class='acc_btn'>";
                                 echo "<a href=\"" . $dirpath . "\" data-lightbox=\"bild-1\" data-title=\"" . $newimage[0] . "\">";
+                                echo "</div>";
                                 echo "<img id=\"" . $images[$i]["pk_bild_id"] . "\" src=\"" . $images[$i]["thumbnail_directory"] . "\" class=\"img-fluid\" alt=\"" . $images[$i]["name"] . "\"></a>";
                                 echo "<p class='text-center'> Das Bild wurde geschossen am " . $images[$i]["aufnahmedatum"] . "</p>";
                                 echo '<div class="form-group">';
@@ -148,7 +153,9 @@ if (isset($_POST['img_sort'])) {
                                         $dirpath = substr($images[$i]["directory"], 3, strlen($images[$i]["directory"]));
                                         echo "<div class=\"col-md-6 col-lg-4 my-image registration-area\">";
                                         echo "<h6 class='text-center'> Name: " . $newimage[0] . "</h6><a href=\"#\" class=\"btn btn-primary mb-3\">Show on Map</a>";
+                                        echo "<div class='acc_btn'>";
                                         echo "<a href=\"" . $dirpath . "\" data-lightbox=\"bild-1\" data-title=\"" . $newimage[0] . "\">";
+                                        echo "</div>";
                                         echo "<img id=\"" . $images[$i]["pk_bild_id"] . "\" src=\"" . $images[$i]["thumbnail_directory"] . "\" class=\"img-fluid\" alt=\"" . $images[$i]["name"] . "\"></a>";
                                         echo "<p class='text-center'> Das Bild wurde geschossen am " . $images[$i]["aufnahmedatum"] . "</p>";
                                         echo "</div>";
@@ -182,7 +189,9 @@ if (isset($_POST['img_sort'])) {
                                         $dirpath = substr($images[$i]["directory"], 3, strlen($images[$i]["directory"]));
                                         echo "<div class=\"col-md-6 col-lg-4 my-image registration-area\">";
                                         echo "<h6 class='text-center'> Name: " . $newimage[0] . "</h6><a href=\"#\" class=\"btn btn-primary mb-3\">Show on Map</a>";
+                                        echo "<div class='acc_btn'>";
                                         echo "<a href=\"" . $dirpath . "\" data-lightbox=\"bild-1\" data-title=\"" . $newimage[0] . "\">";
+                                        echo "</div>";
                                         echo "<img id=\"" . $images[$i]["pk_bild_id"] . "\" src=\"" . $images[$i]["thumbnail_directory"] . "\" class=\"img-fluid\" alt=\"" . $images[$i]["name"] . "\"></a>";
                                         echo "<p class='text-center'> Das Bild wurde geschossen am " . $images[$i]["aufnahmedatum"] . "</p>";
                                         echo '<div class="form-group">';
@@ -210,7 +219,9 @@ if (isset($_POST['img_sort'])) {
                                     $dirpath = substr($images_with_tag[$i]["directory"], 3, strlen($images_with_tag[$i]["directory"]));
                                     echo "<div class=\"col-md-6 col-lg-4 my-image registration-area\">";
                                     echo "<h6 class='text-center'> Name: " . $newimage[0] . "</h6><a href=\"#\" class=\"btn btn-primary mb-3\">Show on Map</a>";
+                                    echo "<div class='acc_btn'>";
                                     echo "<a href=\"" . $dirpath . "\" data-lightbox=\"bild-1\" data-title=\"" . $newimage[0] . "\">";
+                                    echo "</div>";
                                     echo "<img id=\"" . $images_with_tag[$i]["pk_bild_id"] . "\" src=\"" . $images_with_tag[$i]["thumbnail_directory"] . "\" class=\"img-fluid\" alt=\"" . $images_with_tag[$i]["name"] . "\"></a>";
                                     echo "<p class='text-center'> Das Bild wurde geschossen am " . $images_with_tag[$i]["aufnahmedatum"] . "</p>";
                                     echo "<p class='text-center'>#" . $images_with_tag[$i]["tag"] . "</p>";
@@ -233,7 +244,9 @@ if (isset($_POST['img_sort'])) {
                                     $dirpath = substr($images_with_tag[$i]["directory"], 3, strlen($images_with_tag[$i]["directory"]));
                                     echo "<div class=\"col-md-6 col-lg-4 my-image registration-area\">";
                                     echo "<h6 class='text-center'> Name: " . $newimage[0] . "</h6><a href=\"#\" class=\"btn btn-primary mb-3\">Show on Map</a>";
+                                    echo "<div class='acc_btn'>";
                                     echo "<a href=\"" . $dirpath . "\" data-lightbox=\"bild-1\" data-title=\"" . $newimage[0] . "\">";
+                                    echo "</div>";
                                     echo "<img id=\"" . $images_with_tag[$i]["pk_bild_id"] . "\" src=\"" . $images_with_tag[$i]["thumbnail_directory"] . "\" class=\"img-fluid\" alt=\"" . $images_with_tag[$i]["name"] . "\"></a>";
                                     echo "<p class='text-center'> Das Bild wurde geschossen am " . $images_with_tag[$i]["aufnahmedatum"] . "</p>";
                                     echo "<p class='text-center'>#" . $images_with_tag[$i]["tag"] . "</p>";
